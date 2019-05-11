@@ -11,7 +11,7 @@ const GameSchema = new Schema({
         default: false
     },
     gameMaster: {
-        type: { type: Schema.Types.ObjectId, ref: 'User' },
+        type: Schema.Types.ObjectId, ref: 'User',
         required: true
     },
     date: {

@@ -10,8 +10,8 @@ const GameSchema = new Schema({
         type: Boolean,
         default: false
     },
-    gameMasterId: {
-        type: Number,
+    gameMaster: {
+        type: { type: Schema.Types.ObjectId, ref: 'User' },
         required: true
     },
     date: {

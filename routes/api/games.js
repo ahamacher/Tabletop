@@ -20,4 +20,18 @@ router.get('/:id', (req, res) => {
         );
 });
 
+// game create 
+router.post('/',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+
+        const newGame = new Game({
+            name: req.body.name,
+            gameMaster: req.user.id
+        });
+
+        newGame.save().then(game => res.json(game));
+    }
+);
+
 module.exports = router;

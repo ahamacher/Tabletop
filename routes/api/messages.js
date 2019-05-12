@@ -49,3 +49,5 @@ router.post("/game/:game_id",
         newMessage.save().then(message => res.json(message));
     }
 );
+
+module.exports = router;

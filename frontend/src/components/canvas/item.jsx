@@ -24,7 +24,7 @@ const Item = ({ connectDragSource }) => {
         cursor: 'move',
       }}
     >
-      ♘
+      <span>♘</span>
     </div>
   )
 }

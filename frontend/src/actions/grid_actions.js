@@ -1,8 +1,8 @@
-export const MOVE_ITEM = 'MOVE_ITEM'
+export const RECEIVE_ITEM = 'RECEIVE_ITEM'
 
-export const moveItem = (item) => {
+export const receiveItem = (item) => {
     return {
-        type: 'MOVE_ITEM',
+        type: 'RECEIVE_ITEM',
         item
     }
 }

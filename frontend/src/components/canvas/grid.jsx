@@ -6,7 +6,7 @@ class Grid extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { pieces: { 0: { id: 0, x: 8, y: 8 }, 1: { id: 1, x: 0, y: 5 }  }  };
+        this.state = { pieces: { 0: { id: 0, x: 8, y: 8 }, 1: { id: 1, x: 0, y: 5 }, 2: { id: 2, x: 10, y: 12 } } };
         this.moveItem = this.moveItem.bind(this);
     }
 

@@ -4,7 +4,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './utils/session_api_util';
-import { logout } from './util/session_api_util';
+import { logout } from './actions/session_actions';
 
 import './index.css';
 import App from './App';

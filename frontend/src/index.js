@@ -7,9 +7,9 @@ import { setAuthToken } from './utils/session_api_util';
 import { logout } from './actions/session_actions';
 
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { decode } from 'punycode';
+// import App from './App';
+// import * as serviceWorker from './serviceWorker';
+// import { decode } from 'punycode';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

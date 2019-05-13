@@ -38,6 +38,8 @@ a/A group project with MERN-stack
     * Initialize folder structure
     * 80% Auth1
 * Group Members and Work Breakdown
+
+
 |   | Monday Morning  | Monday Afternoon  | Tuesday Morning  | Tuesday Afternoon  | Wednesday Morning  |
 |---|---|---|---|---|---|
 | Jason L  | Image Upload  | Image Upload  | Message Display  | Message Display  | Seed Data  |

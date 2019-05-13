@@ -25,8 +25,8 @@ router.post('/game/:game_id/images'), (req, res) => {
     const newImage = new Image({
         user: req.user.id,
         scalefactor: req.body.scalefactor,
-        layer_id: req.params.layer_id
-        game_id: req.params.game_id
+        layer_id: req.params.layer_id,
+        game_id: req.params.game_id,
         url: req.body.url,
         position: req.body.position
     });
@@ -40,7 +40,7 @@ router.get('/game/:game_id/images/:image_id'), (req, res) => {
     Image.findById({ game: req.params.game_id })
         .then( image => res.json(image))
         .catch( err => 
-            res.status(404).json({ noimagefound: 'Image ID does not exist' })
+            res.status(404).json({ noimagefound: 'Image ID does not exist' }))
 };
 
 
@@ -49,11 +49,9 @@ router.get('/game/:game_id/images/:image_id'), (req, res) => {
 router.delete('/game/:game_id/images/:image_id'), (req, res) => {
     
     const image = Image.findById(req.params.id)
-        .then()
+        .then(image => image.delete())
         .catch(err =>
-            res.status(404).json({ noimagefound: 'Image ID does not exist' })
-    
-    image.delete()
+            res.status(404).json({ noimagefound: 'Image ID does not exist' }))
 }
 
 module.exports = router;

@@ -15,7 +15,7 @@ import MainPage from './main/main_page';
 const App = () => (
   <div>
     {/* <NavBarContainer /> */}
-    <Grid knightPos={[7, 4]} />
+    <Grid />
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       {/* <AuthRoute exact path="/login" component={LoginFormContainer} />

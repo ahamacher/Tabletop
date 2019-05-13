@@ -1,13 +1,11 @@
 import React from 'react';
 import { DragSource } from 'react-dnd'
+import { KNIGHT } from './items'
 
-const Types = {
-    ITEM: 'knight'
-}
 
-const knightSource = {
-    beginDrag() {
-        return {}
+const itemSource = {
+    beginDrag(props) {
+      return { id: props.id }
     }
 }
 
@@ -18,13 +16,14 @@ function collect(connect, monitor) {
   }
 }
 
-const Knight = ({ connectDragSource }) => {
+const Item = ({ connectDragSource }) => {
   return connectDragSource (
     <div
       style={{
         fontSize: 20,
         fontWeight: 'bold',
         cursor: 'move',
+        
       }}
     >
       ♘
@@ -32,4 +31,4 @@ const Knight = ({ connectDragSource }) => {
   )
 }
 
-export default DragSource(Types.ITEM, knightSource, collect)(Knight)
+export default DragSource(KNIGHT, itemSource, collect)(Item)

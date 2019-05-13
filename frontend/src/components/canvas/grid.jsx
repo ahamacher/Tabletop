@@ -1,44 +1,59 @@
 import React from 'react';
 import BoardSquare from './board_square';
-import Knight from './knight';
+import Item from './item';
 
 class Grid extends React.Component {
 
     constructor(props) {
         super(props);
-        this.handleSquareClick = this.handleSquareClick.bind(this);
-        this.state = this.props;
+        this.state = { pieces: { 0: { id: 0, x: 8, y: 8 }, 1: { id: 1, x: 0, y: 5 }  }  };
+        this.moveItem = this.moveItem.bind(this);
     }
 
-    handleSquareClick(pos) {
-        return (e) => this.moveKnight(pos)
+    moveItem(id, pos) {
+        const pieces = this.state.pieces;
+        const pieceId = parseInt(id); 
+        const piece = pieces[pieceId];
+        piece.x = pos[0];
+        piece.y = pos[1];
+        pieces[pieceId] = piece;
+        this.setState({ pieces: pieces })
     }
 
-    moveKnight(pos) {
-        this.setState({ knightPos: pos })
-    }
-
-    renderSquare([x, y], knightPos) {
+    renderSquare([x, y]) {
         return (
             <div key={[x,y]} style={{ width: '4%', height: '4%' }}>
-                <BoardSquare x={x} y={y} moveKnight={() => this.moveKnight([x,y])}>
-                    {this.renderPiece(x, y, knightPos)}
+                <BoardSquare x={x} y={y} moveItem={this.moveItem}>
+                    {this.renderPiece([x, y])}
                 </BoardSquare>
             </div>
         )
     }
 
-    renderPiece(x, y, [knightX, knightY]) {
-        if (x === knightX && y === knightY) {
-            return <Knight />
+    renderPiece(pos) {
+        const piece = this.getPiece(pos);
+        if (piece) {
+            return <Item id={piece.id} />
         }
+    }
+
+    getPiece([x, y]) {
+        const pieces = this.state.pieces;
+        for (let p in pieces) {
+            if (pieces[p].x === x && pieces[p].y === y) {
+                const piece = pieces[p];
+                piece.id = p;
+                return piece;
+            }
+        }
+        return null;
     }
 
     render() {
         const squares = [];
         for (let col = 0; col < 25; col++) {
             for (let row = 0; row < 25; row++ ) {
-                squares.push(this.renderSquare([row, col], this.state.knightPos))
+                squares.push(this.renderSquare([row, col]))
             }
         }
         return (

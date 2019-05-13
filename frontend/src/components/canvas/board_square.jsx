@@ -1,14 +1,12 @@
 import React from 'react'
 import Square from './square'
 import { DropTarget } from 'react-dnd'
-
-const Types = {
-    ITEM: 'knight'
-}
+import { KNIGHT } from './items'
 
 const squareTarget = {
-    drop(props) {
-        props.moveKnight([props.x, props.y])
+    drop(props, monitor) {
+        const item = monitor.getItem();
+        props.moveItem(item.id, [props.x, props.y])
     },
 }
 
@@ -19,7 +17,7 @@ function collect(connect, monitor) {
     }
 }
 
-function BoardSquare({ x, y, connectDropTarget, isOver, children }) {
+function BoardSquare({connectDropTarget, children }) {
 
     return connectDropTarget(
         <div
@@ -33,4 +31,4 @@ function BoardSquare({ x, y, connectDropTarget, isOver, children }) {
     )
 }
 
-export default DropTarget(Types.ITEM, squareTarget, collect)(BoardSquare)
+export default DropTarget(KNIGHT, squareTarget, collect)(BoardSquare)

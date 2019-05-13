@@ -23,12 +23,9 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 app.use("/api/users", users);
-<<<<<<< HEAD
 app.use("/api/tweets", tweets);
 app.use("/api/messages", messages);
 
-=======
->>>>>>> master
 
 
 const port = process.env.PORT || 5000;

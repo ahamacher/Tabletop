@@ -1,6 +1,9 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../utils/route_util';
 import { Switch } from 'react-router-dom';
+import Grid from './canvas/grid';
+import HTML5Backend from 'react-dnd-html5-backend'
+import { DragDropContext } from 'react-dnd'
 
 //leaving this temporarly here
 import MainPage from './main/main_page';
@@ -12,6 +15,7 @@ import MainPage from './main/main_page';
 const App = () => (
   <div>
     {/* <NavBarContainer /> */}
+    <Grid knightPos={[7, 4]} />
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       {/* <AuthRoute exact path="/login" component={LoginFormContainer} />
@@ -20,4 +24,5 @@ const App = () => (
   </div>
 );
 
-export default App;
+export default DragDropContext(HTML5Backend)(App)
+

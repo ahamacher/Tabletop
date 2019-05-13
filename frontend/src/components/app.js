@@ -1,7 +1,7 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../utils/route_util';
 import { Switch } from 'react-router-dom';
-import Grid from './canvas/grid';
+import GameCanvas from './canvas/game_canvas';
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 
@@ -15,7 +15,7 @@ import MainPage from './main/main_page';
 const App = () => (
   <div>
     {/* <NavBarContainer /> */}
-    <Grid />
+    <GameCanvas />
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       {/* <AuthRoute exact path="/login" component={LoginFormContainer} />

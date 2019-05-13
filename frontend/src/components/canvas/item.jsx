@@ -15,11 +15,11 @@ const collect = (connect, monitor) => {
   }
 }
 
-const Item = ({ connectDragSource }) => {
+const Item = ({ connectDragSource, isDragging }) => {
   return connectDragSource (
     <div
       style={{
-        fontSize: 20,
+        fontSize: 50,
         fontWeight: 'bold',
         cursor: 'move',
       }}

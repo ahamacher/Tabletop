@@ -6,7 +6,7 @@ class Grid extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { pieces: { 0: { id: 0, x: 8, y: 8 }, 1: { id: 1, x: 0, y: 5 }, 2: { id: 2, x: 10, y: 12 } } };
+        this.state = { pieces: { 0: { id: 0, x: 0, y: 0 }, 1: { id: 1, x: 0, y: 5 }, 2: { id: 2, x: 10, y: 12 } } };
         this.moveItem = this.moveItem.bind(this);
     }
 
@@ -59,10 +59,15 @@ class Grid extends React.Component {
         return (
             <div
                 style={{
-                    width: '600px',
-                    height: '600px',
+                    position: 'absolute',
+                    height: '90%',
+                    width: '90%',
+                    top: '50px',
+                    bottom: '0',
+                    right: '0',
+                    left: '50px',
                     display: 'flex',
-                    flexWrap: 'wrap',
+                    flexWrap: 'wrap'
                 }}>
                 { squares }
             </div>

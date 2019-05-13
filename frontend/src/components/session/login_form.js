@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -46,6 +46,12 @@ class LoginForm extends Component {
     )
   }
 
+  handleDemo(){
+    const { login } = this.props;
+    const user = { email: "mattmercer@dnd.com", password: "password" };
+    login(user);
+  }
+
   render() {
     return(
       <div className="session-form login">
@@ -61,9 +67,13 @@ class LoginForm extends Component {
             placeholder="Password"
             onChange={this.update('password')}
           />
+          {this.errorsRender()}
         <button type="submit">Login</button>
-        <button type="button">Demo User</button>
+        <button type="button" onClick={() => this.handleDemo()}>Demo User</button>
         </form>
+        <div className="session-form-footer">
+          Don't have an account? <Link to={'/signup'}>Signup</Link>
+        </div>
       </div>
     );
   }

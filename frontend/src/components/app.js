@@ -7,7 +7,7 @@ import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import NavBarContainer from './nav/navbar_container';
-import GamePage from './game/game_page';
+import GamePage from './game/game_page.js';
 
 
 const App = () => (

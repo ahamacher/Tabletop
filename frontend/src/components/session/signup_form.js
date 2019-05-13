@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom';
+import { signup } from '../../actions/session_actions';
 
 class SignupForm extends Component {
   constructor(props) {
@@ -30,10 +31,10 @@ class SignupForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { login } = this.props;
-    const { email, password } = this.state;
-    const user = { email, password };
-    login(user);
+    const { signup } = this.props;
+    const { email, password, username, password2 } = this.state;
+    const user = { username, email, password, password2 };
+    signup(user);
   }
 
   errorsRender() {

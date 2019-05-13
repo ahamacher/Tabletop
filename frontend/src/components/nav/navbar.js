@@ -18,6 +18,7 @@ class NavBar extends Component {
         <div className="nav-links">
           <Link to={'/game/new'}>Create new tabletop</Link>
           <Link to={'/games'}>Current games</Link>
+          <button onClick={() => this.props.logout()}>logout</button>
         </div>
       )
     } else {

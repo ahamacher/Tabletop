@@ -20,11 +20,11 @@ class Grid extends React.Component {
         this.setState({ pieces: pieces })
     }
 
-    renderSquare([x, y]) {
+    renderSquare(pos) {
         return (
-            <div key={[x,y]} style={{ width: '4%', height: '4%' }}>
-                <BoardSquare x={x} y={y} moveItem={this.moveItem}>
-                    {this.renderPiece([x, y])}
+            <div key={pos} style={{ width: '4%', height: '4%' }}>
+                <BoardSquare x={pos[0]} y={pos[1]} moveItem={this.moveItem}>
+                    {this.renderPiece(pos)}
                 </BoardSquare>
             </div>
         )
@@ -37,10 +37,10 @@ class Grid extends React.Component {
         }
     }
 
-    getPiece([x, y]) {
+    getPiece(pos) {
         const pieces = this.state.pieces;
         for (let p in pieces) {
-            if (pieces[p].x === x && pieces[p].y === y) {
+            if (pieces[p].x === pos[0] && pieces[p].y === pos[1]) {
                 const piece = pieces[p];
                 piece.id = p;
                 return piece;

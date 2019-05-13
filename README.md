@@ -38,3 +38,9 @@ a/A group project with MERN-stack
     * Initialize folder structure
     * 80% Auth1
 * Group Members and Work Breakdown
+|   | Monday Morning  | Monday Afternoon  | Tuesday Morning  | Tuesday Afternoon  | Wednesday Morning  |
+|---|---|---|---|---|---|
+| Jason L  | Image Upload  | Image Upload  | Message Display  | Message Display  | Seed Data  |
+| Jason Y  | Canvas  | Canvas  | Render Layers | Render Layers | Seed Data  |
+| Andrew H  | Socket  | Socket  | Moving Images  | Moving Images  | Seed Data  |
+| Kevin C  | Image Storage  | Image Storage  | Canvas Menu  | Canvas Menu  | Seed Data  |

@@ -10,15 +10,14 @@ const squareTarget = {
     },
 }
 
-function collect(connect, monitor) {
+const collect = (connect, monitor) => {
     return {
         connectDropTarget: connect.dropTarget(),
         isOver: monitor.isOver(),
     }
 }
 
-function BoardSquare({connectDropTarget, children }) {
-
+const BoardSquare = ({connectDropTarget, children }) => {
     return connectDropTarget(
         <div
             style={{

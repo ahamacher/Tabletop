@@ -2,14 +2,13 @@ import React from 'react';
 import { DragSource } from 'react-dnd'
 import { KNIGHT } from './items'
 
-
 const itemSource = {
     beginDrag(props) {
       return { id: props.id }
     }
 }
 
-function collect(connect, monitor) {
+const collect = (connect, monitor) => {
   return {
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging(),
@@ -23,7 +22,6 @@ const Item = ({ connectDragSource }) => {
         fontSize: 20,
         fontWeight: 'bold',
         cursor: 'move',
-        
       }}
     >
       ♘

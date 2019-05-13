@@ -29,5 +29,5 @@ const mapStateToProps = state => (
   {loggedIn: state.session.isAuthenticated}
 );
 
-export const Authroute = withRouter(connect(mapStateToProps)(Auth));
+export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));

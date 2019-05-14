@@ -6,24 +6,10 @@ const ImageSchema = new Schema({
         type: String,
         required: true
     },
-    position: {
-        type: Array,
-        required: true,
-        default: [0,0]
-    },
-    scalefactor: {
-        type: Schema.Types.Decimal128,
-        required: true,
-        default: 1.0 
-    },
-    layer_id: {
-        type: Number,
-        required: true
-    },
     game_id: {
-        type: Number,
-        required: true
-    },
+        type: Schema.Types.ObjectId, 
+        ref: 'games' 
+    }
 
 })
 

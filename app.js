@@ -4,6 +4,7 @@ const users = require("./routes/api/users");
 const messages = require("./routes/api/messages");
 const games = require("./routes/api/games");
 const images = require('./routes/api/images');
+const imageInstances = require('./routes/api/image_instances');
 
 const bodyParser = require("body-parser");
 const db = require("./config/keys").mongoURI;
@@ -28,6 +29,7 @@ app.use("/api/users", users);
 app.use("/api/messages", messages);
 app.use("/api/images", images);
 app.use("/api/games", games);
+app.use("/api/image_instances", imageInstances);
 
 
 const port = process.env.PORT || 5000;

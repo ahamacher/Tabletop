@@ -5,6 +5,9 @@ import GameCanvas from './canvas/game_canvas';
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 
+// socket imports, may move depending on if we want it to load
+// upon moving to the /game page
+
 //leaving this temporarly here
 import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';

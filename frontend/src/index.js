@@ -10,9 +10,9 @@ import axios from "axios";
 import { fetchMessagesByGameId, createMessage } from "./actions/messages_actions";
 
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { decode } from 'punycode';
+// import App from './App';
+// import * as serviceWorker from './serviceWorker';
+// import { decode } from 'punycode';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;

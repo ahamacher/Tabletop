@@ -124,6 +124,7 @@ code {
   font-size: 600px;
   right: -120px;
   bottom: -100px;
+  z-index: 0;
 }
 
 #splash-content {
@@ -142,6 +143,7 @@ code {
   margin-top: 100px;
   margin-bottom: 20px;
   text-align: center;
+  z-index: 100;
 }
 
 #splash-content p {
@@ -149,10 +151,13 @@ code {
   font-size: 16px;
   margin-bottom: 30px;
   text-align: center;
+  z-index: 100;
+
 }
 
 #splash-buttons {
   display: flex;
+  z-index: 100;
 }
 
 #splash-buttons a {

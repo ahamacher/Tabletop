@@ -1,10 +1,13 @@
-import { fetchImageInstancesByGameId, createImageInstance, updateImageInstance } from "../../actions/image_instance_actions";
+import { fetchImageInstancesByGameId, createImageInstance, updateImageInstance, receiveImageInstance } from "../../actions/image_instance_actions";
 import { fetchImages } from "../../actions/image_actions"; 
 import { connect } from "react-redux";
 import React from "react";
+import 'whatwg-fetch';
+import socketIOClient from 'socket.io-client';
 
 // #TODO only grab imageInstances and images from this room
 const mapStateToProps = (state, ownProps) => ({
+    gameId: ownProps.match.params.gameId,
     imageInstances: state.entities.imageInstances,
     images: state.entities.images
 })
@@ -14,7 +17,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchImageInstances: () => dispatch(fetchImageInstancesByGameId(ownProps.match.params.gameId)),
     createImageInstance: (imageId) => dispatch(createImageInstance(imageId)),
     updateImageInstance: (imageInstanceId, updateParams) => dispatch(updateImageInstance(imageInstanceId, updateParams)),
-    fetchImages: () => dispatch(fetchImages(ownProps.match.params.gameId))
+    fetchImages: () => dispatch(fetchImages(ownProps.match.params.gameId)),
+    receiveImageInstance: imageInstance => dispatch(receiveImageInstance(imageInstance))
 })
 
 class ImageInstances extends React.Component {
@@ -30,6 +34,17 @@ class ImageInstances extends React.Component {
         this.handleCreate = this.handleCreate.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleFetchImages = this.handleFetchImages.bind(this);
+    }
+
+    componentDidMount(){
+        const endpoint = 'http://localhost:8000';
+        const socket = socketIOClient(endpoint);
+        const { gameId } = this.props;
+        socket.emit('join', gameId);
+        this.socket = socket
+        socket.on("image-instance", imageInstance => {
+            this.props.receiveImageInstance(imageInstance)
+        })
     }
 
     handleFetchImageInstances(e) {

@@ -6,18 +6,23 @@ class Grid extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { pieces: { 0: { id: 0, x: 0, y: 0 }, 1: { id: 1, x: 0, y: 5 }, 2: { id: 2, x: 10, y: 12 } } };
+        // this.state = { pieces: { 0: { id: 0, x: 0, y: 0 }, 1: { id: 1, x: 0, y: 5 }, 2: { id: 2, x: 10, y: 12 } } };
+        this.state = this.props.pieces
         this.moveItem = this.moveItem.bind(this);
     }
 
+    componentDidMount() {
+        this.props.fetchItems(this.props.match.params.gameId)
+    }
+
     moveItem(id, pos) {
-        const pieces = this.state.pieces;
-        const pieceId = parseInt(id); 
-        const piece = pieces[pieceId];
-        piece.x = pos[0];
-        piece.y = pos[1];
-        pieces[pieceId] = piece;
+        const pieces = this.props.pieces; 
+        const piece = pieces[id];
+        piece.position[0] = pos[0];
+        piece.position[1] = pos[1];
+        pieces[id] = piece;
         this.setState({ pieces: pieces })
+        // call update method
     }
 
     renderSquare(pos) {
@@ -38,9 +43,9 @@ class Grid extends React.Component {
     }
 
     getPiece(pos) {
-        const pieces = this.state.pieces;
+        const pieces = this.props.pieces;
         for (let p in pieces) {
-            if (pieces[p].x === pos[0] && pieces[p].y === pos[1]) {
+            if (pieces[p].position[0] === pos[0] && pieces[p].position[1] === pos[1]) {
                 const piece = pieces[p];
                 piece.id = p;
                 return piece;

@@ -4,8 +4,33 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Image = require('../../models/Image');
- 
 
+const aws = require("aws-sdk");
+const multer = require("multer");
+const multerS3 = require("multer-s3");
+const config = require("../../config/keys");
+
+aws.config.update({
+    secretAccessKey: config.s3secretAccessKey,
+    accessKeyId: config.s3accessKeyId,
+    region: config.s3region
+})
+
+const s3 = new aws.S3();
+
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        acl: "public-read",
+        bucket: "tabletop-images-16",
+        metadata: function (req, file, cb) {
+            cb(null, { fieldName: "TESTING_META_DATA" });
+        },
+        key: function (req, file, cb) {
+            cb(null, Date.now().toString())
+        }
+    })
+})
 
 // Index page of all images in a specific game
 router.get('/game/:game_id/images', (req, res) => {
@@ -15,24 +40,23 @@ router.get('/game/:game_id/images', (req, res) => {
 });
 
 // Create an image in a game. How are we threading layers into this?
-router.post('/game/:game_id/images'), (req, res) => {
+router.post("/game/:game_id/images",
 
-    Image.find({game: req.params.game_id})
-    .then(image => res.json(image))
-    .catch(err => res.status(404).json({ noimagesfound: 'No images available in that game.' }));
+    passport.authenticate('jwt', { session: false }),
 
+    upload.single("image"),
 
-    const newImage = new Image({
-        user: req.user.id,
-        scalefactor: req.body.scalefactor,
-        layer_id: req.params.layer_id,
-        game_id: req.params.game_id,
-        url: req.body.url,
-        position: req.body.position
-    });
+    function(req, res) {
+        const newImage = new Image({
+            user: req.user.id,
+            layer_id: 0,
+            game_id: req.params.game_id,
+            url: req.file.location
+        })
 
-    newImage.save().then( image => res.json(image));
-};
+        newImage.save().then(image => res.json(image));
+    }
+);
 
 /// Show image route available to everyone. (Optional)
 router.get('/game/:game_id/images/:image_id'), (req, res) => {
@@ -52,7 +76,10 @@ router.delete('/game/:game_id/images/:image_id'), (req, res) => {
         .then(image => image.delete())
         .catch(err =>
             res.status(404).json({ noimagefound: 'Image ID does not exist' }))
-}
+    
+    image.delete()
+};
+
 
 module.exports = router;
 

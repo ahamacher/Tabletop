@@ -4,10 +4,12 @@ class Images extends React.Component {
     constructor(props) {
         super(props);
         
-        this.state = { url: ''}
+        this.state = {image: ""};
 
        
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleImageFile = this.handleImageFile.bind(this);
+
     }
 
 
@@ -15,24 +17,27 @@ class Images extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        formData.append("url", this.state.url);
-        this.props.createImage(this.props.game_id, formData);
+        formData.append("image", this.state.image);
+        formData.append("x", {y: "1"})
+        
+        this.props.createImage(formData);
 
     }
 
-    // handleImageFile(e) {
-    //     const image = e.currentTarget.files[0];
-    //     const fileReader = new FileReader();
-    //     fileReader.onloadend = () => {
-    //         this.setState({
-    //             image: image,
-    //             imageUrl: fileReader.result
-    //         });
-    //     };
-    //     if (image) {
-    //         fileReader.readAsDataURL(image);
-    //     }
-    // }
+    handleImageFile(e) {
+        const image = e.currentTarget.files[0];
+        ;
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            this.setState({
+                image: image,
+                imageUrl: fileReader.result
+            });
+        };
+        if (image) {
+            fileReader.readAsDataURL(image);
+        }
+    }
 
     update(field) {
         return e => this.setState({ [field]: e.target.value })
@@ -54,9 +59,9 @@ class Images extends React.Component {
             <div>
 
             
-                <form onSubmit={this.handleSubmit} >
+                <form onSubmit={this.handleSubmit} encType="multipart/form-data">
                     Select image to upload:
-                    <input type="file" onChange={this.update('url')} />
+                    <input type="file" onChange={this.handleImageFile} />
                     <input type="submit" value="Upload Image" name="submit" />
                 </form>
 

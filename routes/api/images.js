@@ -48,6 +48,7 @@ router.post("/game/:game_id",
     upload.single("image"),
 
     function(req, res) {
+        console.log(req.params.game_id)
         const newImage = new Image({
             game_id: req.params.game_id,
             url: req.file.location

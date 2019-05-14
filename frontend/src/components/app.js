@@ -32,6 +32,7 @@ const App = () => (
       <ProtectedRoute exact path="/games/new" component={GameFormContainer} />
       <ProtectedRoute exact path="/games/:gameId" component={GameContainer} />
       <ProtectedRoute exact path="/messages" component={MessagesPage} />
+      <ProtectedRoute path="/images/:gameId" component={ImagesContainer} />
       <ProtectedRoute exact path="/images" component={ImagesContainer} />
       <ProtectedRoute path="/image_instances/:gameId" component={ImageInstancesContainer} />
       <Redirect to="/" />

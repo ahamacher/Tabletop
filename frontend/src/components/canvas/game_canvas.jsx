@@ -1,7 +1,7 @@
 // canvas grid: https://medium.com/@xon5/flexible-canvas-grid-without-blurred-lines-907fcadf5bfc
 
 import React from 'react';
-import Grid from './grid';
+import GridContainer from './grid_container';
 
 class GameCanvas extends React.Component {
 
@@ -40,7 +40,7 @@ class GameCanvas extends React.Component {
             <div style={{position: "relative", height: "1000px", width: "1000px"}}>
                 <canvas ref="canvas" height="1000" width="1000">
                 </canvas>
-                <Grid />
+                <GridContainer />
             </div>
 
         );

@@ -8,7 +8,6 @@ const validateMessageInput = require("../../validation/messages");
 
 // #TODO will current game live as part of url? or part of http header just like user?
 router.get("/game/:game_id", (req, res) => {
-    debugger
     Message.find({game: req.params.game_id})
         .sort({ date: -1 })
         .then(messages => res.json(messages))

@@ -21,6 +21,20 @@ class Images extends React.Component {
 
     }
 
+    // handleImageFile(e) {
+    //     const image = e.currentTarget.files[0];
+    //     const fileReader = new FileReader();
+    //     fileReader.onloadend = () => {
+    //         this.setState({
+    //             image: image,
+    //             imageUrl: fileReader.result
+    //         });
+    //     };
+    //     if (image) {
+    //         fileReader.readAsDataURL(image);
+    //     }
+    // }
+
     update(field) {
         return e => this.setState({ [field]: e.target.value })
     }

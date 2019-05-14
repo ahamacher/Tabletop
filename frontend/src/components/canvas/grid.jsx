@@ -12,14 +12,14 @@ class Grid extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchItems(this.props.match.params.gameId)
+        this.props.fetchImageInstancesByGameId(this.props.match.params.gameId)
     }
 
     moveItem(id, pos) {
         const pieces = this.props.pieces; 
         const piece = pieces[id];
-        piece.position[0] = pos[0];
-        piece.position[1] = pos[1];
+        piece.positionX = pos[0];
+        piece.positionY = pos[1];
         pieces[id] = piece;
         this.setState({ pieces: pieces })
         // call update method
@@ -45,8 +45,7 @@ class Grid extends React.Component {
     getPiece(pos) {
         const pieces = this.props.pieces;
         for (let p in pieces) {
-            debugger
-            if (pieces[p].position[0] === pos[0] && pieces[p].position[1] === pos[1]) {
+            if (pieces[p].positionX === pos[0] && pieces[p].positionY === pos[1]) {
                 const piece = pieces[p];
                 piece.id = p;
                 return piece;

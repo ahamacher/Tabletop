@@ -1,17 +1,17 @@
 import { connect } from 'react-redux'
-import { fetchItems } from  '../../actions/item_actions';
+import { fetchImageInstancesByGameId } from  '../../actions/image_instance_actions';
 import Grid from './grid';
 import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        pieces: state.entities.items
+        pieces: state.entities.imageInstances
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchItems: (gameId) => dispatch(fetchItems(gameId)),
+        fetchImageInstancesByGameId: (gameId) => dispatch(fetchImageInstancesByGameId(gameId)),
     }
 }
 

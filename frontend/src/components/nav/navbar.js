@@ -18,7 +18,7 @@ class NavBar extends Component {
         <div className="nav-links">
           <Link to={'/game/new'}>Create new tabletop</Link>
           <Link to={'/games'}>Current games</Link>
-          <button onClick={() => this.props.logout()}>logout</button>
+          <button onClick={() => this.props.logout()}>Logout</button>
         </div>
       )
     } else {
@@ -34,6 +34,7 @@ class NavBar extends Component {
   render(){
     return(
       <div className="nav-container">
+        <Link to="/"><h2><i class="fas fa-dice-d20"></i>TableTop</h2></Link>
         { this.getLinks() }
       </div>
     )

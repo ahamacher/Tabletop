@@ -42,7 +42,10 @@ export const login = user => dispatch => (
 export const signup = user => dispatch => (
   APIUtil.signup(user).then(() => (
     dispatch(receiveUserLogin())
-  ), err => dispatch(receiveErrors(err)))
+  ))
+  .catch(err => {
+      dispatch(receiveErrors(err.response.data))
+  })
 );
 
 export const logout = () => dispatch => {

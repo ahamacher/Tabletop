@@ -55,25 +55,29 @@ class LoginForm extends Component {
   render() {
     return(
       <div className="session-form login">
-        <h2>Login to Tabletop</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input 
-            type="email"
-            placeholder="Enter e-mail"
-            onChange={this.update('email')}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={this.update('password')}
-          />
-          {this.errorsRender()}
-        <button type="submit">Login</button>
-        <button type="button" onClick={() => this.handleDemo()}>Demo User</button>
-        </form>
-        <div className="session-form-footer">
-          Don't have an account? <Link to={'/signup'}>Signup</Link>
-        </div>
+        <section className="session-form-body">
+          <h2>Login to Tabletop</h2>
+          <section className="session-errors">
+            {this.errorsRender()}
+          </section>
+          <form id='session-form-inputs' onSubmit={this.handleSubmit}>
+            <label>Email</label>
+            <input 
+              type="email"
+              onChange={this.update('email')}
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              onChange={this.update('password')}
+            />
+          <button type="submit">Login</button>
+          <button type="button" onClick={() => this.handleDemo()}>Demo User</button>
+          </form>
+          <div className="session-form-footer">
+            Don't have an account? <Link to={'/signup'}>Signup</Link>
+          </div>
+        </section>
       </div>
     );
   }

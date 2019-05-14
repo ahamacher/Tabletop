@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Image = require('../../models/Image');
+const ImageInstance = require('../../models/ImageInstance');
 
 const aws = require("aws-sdk");
 const multer = require("multer");
@@ -33,14 +34,14 @@ const upload = multer({
 })
 
 // Index page of all images in a specific game
-router.get('/game/:game_id/images', (req, res) => {
+router.get('/game/:game_id', (req, res) => {
     Image.find({game_id: req.params.game_id})
         .then(images => res.json(images))
-        .catch( err => res.status(404).json({ noimagesfound: 'No images available in that game.'}));
+        .catch(err => res.status(404).json({ noimagesfound: 'No images available in that game.'}));
 });
 
 // Create an image in a game. How are we threading layers into this?
-router.post("/game/:game_id/images",
+router.post("/game/:game_id",
 
     passport.authenticate('jwt', { session: false }),
 
@@ -48,13 +49,16 @@ router.post("/game/:game_id/images",
 
     function(req, res) {
         const newImage = new Image({
-            user: req.user.id,
-            layer_id: 0,
             game_id: req.params.game_id,
             url: req.file.location
         })
 
-        newImage.save().then(image => res.json(image));
+        newImage.save().then(image => {
+            const newImageInstance = new ImageInstance({
+                image_id: image._id
+            })
+            newImageInstance.save().then(() => res.json(image))
+        });
     }
 );
 

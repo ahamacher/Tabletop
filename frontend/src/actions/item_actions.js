@@ -26,3 +26,7 @@ export const receiveItems = (items) => {
 export const fetchItems = (gameId) => dispatch => {
     return ImagesAPIUtil.getImagesByGameId(gameId).then((res) => dispatch(receiveItems(res.data)))
 } 
+
+export const updateItem = (item) => dispatch => {
+    //
+}

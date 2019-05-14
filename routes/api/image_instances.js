@@ -36,7 +36,6 @@ router.post("/image/:image_id", (req, res) => {
 
 router.put("/:image_instance_id", (req, res) => {
     const updateParams = req.body;
-
     ImageInstance.findOneAndUpdate( {_id: req.params.image_instance_id}, updateParams, {new: true})
     .populate("image_id")
         .then(imageInstance => {

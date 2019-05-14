@@ -10,5 +10,6 @@ export const createImageInstance = (imageId) => (
 
 // NOTE: updateParams takes in {positionX, positionY, scalefactor, and layer_id}
 export const updateImageInstance = (imageInstanceId, updateParams) => {
+    
     return axios.put(`api/image_instances/${imageInstanceId}`, updateParams)
 }

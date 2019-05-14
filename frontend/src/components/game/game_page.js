@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getImagesByGameId } from "../../utils/images_api_util";
 // import { withRouter } from 'react-router-dom';
+import GameCanvas from '../canvas/game_canvas';
 
 class GamePage extends Component {
   constructor(props) {
@@ -12,8 +13,11 @@ class GamePage extends Component {
     let res = getImagesByGameId(1);
     debugger
     return (
-      <h1>LOGGED INTO THE GAME PAGE</h1>
-    )
+      <div>
+        <h1>LOGGED INTO THE GAME PAGE</h1>
+        <GameCanvas />
+      </div>
+      )
   }
 }
 

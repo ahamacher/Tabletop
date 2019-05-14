@@ -46,7 +46,9 @@ router.post("/game/:game_id",
             text: req.body.text
         })
 
-        newMessage.save().then(message => res.json(message));
+        newMessage.save().then(message => {
+            req.app.io.in(req.params.game_id).emit('new-message', message);
+            return res.json(message)});
     }
 );
 

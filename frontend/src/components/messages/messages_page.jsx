@@ -1,15 +1,23 @@
 import React from "react";
+import 'whatwg-fetch';
+import socketIOClient from 'socket.io-client';
+import io from 'socket.io-client'
 import { connect } from "react-redux";
-import { fetchMessagesByGameId, createMessage } from "../../actions/messages_actions";
+import { 
+    fetchMessagesByGameId, 
+    createMessage, 
+    receiveMessage } from "../../actions/messages_actions";
 
 const mapStateToProps = (state) => ({
     messages: state.entities.messages
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+    debugger;
     return {
-    fetchMessages: () => dispatch(fetchMessagesByGameId(ownProps.match.params.groupId)),
-    createMessage: (text) => dispatch(createMessage(ownProps.match.params.groupId, text))
+    receiveMessage: message => dispatch(receiveMessage(message)),
+    fetchMessages: () => dispatch(fetchMessagesByGameId(ownProps.gameId)),
+    createMessage: (text) => dispatch(createMessage(ownProps.gameId, text))
 }}
 
 class MessagesPage extends React.Component {
@@ -23,6 +31,18 @@ class MessagesPage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }   
+
+    componentDidMount(){
+        const endpoint = 'http://localhost:8000';
+        const socket = socketIOClient(endpoint);
+        const { gameId } = this.props;
+        socket.emit('join', gameId);
+        this.socket = socket
+        socket.on("new-message", message => {
+            this.props.receiveMessage(message)
+        })
+        
+    }
 
     handleChange(e) {
         this.setState({

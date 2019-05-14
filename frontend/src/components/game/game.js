@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import socketIOClient from 'socket.io-client';
 import GameCanvas from '../canvas/game_canvas';
+import MessagesPage from '../messages/messages_page';
 
 class Game extends Component {
   constructor(props){
@@ -21,7 +22,6 @@ class Game extends Component {
     const endpoint = 'http://localhost:8000';
     const socket = socketIOClient(endpoint);
     socket.emit('join', gameId);
-    socket.on("conversation", data => this.setState({ response: this.state.response.concat([data]) }))
     this.socket = socket
   }
 
@@ -49,16 +49,9 @@ class Game extends Component {
   render() {
     return(
       <div>
-        <h1>LOGGED INTO THE GAME PAGE</h1>
+        <h1>LOGGED INTO GAME: {this.props.gameId}</h1>
         <GameCanvas />
-        <form>
-          <input type="text" onChange={this.update('message')} value={this.state.message} />
-          <button type="submit">submit</button>
-        </form>
-        <button onClick={this.sendSocketIO}>socketme</button>
-        <ul>
-          {this.messageRender()}
-        </ul>
+        <MessagesPage gameId={this.props.gameId}/>
       </div>
     )
   }

@@ -14,20 +14,22 @@ class GameForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const gameForm = { ...this.state, gameMaster: this.props.currentUser._id }
-        this.props.createGame(gameForm).then((res) => this.props.history.push(`/games/${res._id}`))
+        const gameForm = { ...this.state }
+        this.props.createGame(gameForm).then((res) => this.props.history.push(`/games/${res._id}`)).catch((err) => console.log(err))
     }
 
     render() {
         return (
-            <div id="create-game-page">
-                <form onSubmit={this.handleSubmit} id="create-game-form">
-                    <h2>Create a New Game</h2>
-                    <label>Name</label>
-                    <input type="text" 
-                    onChange={this.handleChange} value={this.state.name}/>
-                    <input type="submit" value="Submit"/>
-                </form>
+            <div className="create-game-page session-form">
+                <section className="create-game-form-body session-form-body">
+                    <form onSubmit={this.handleSubmit} className="create-game-form session-form-inputs">
+                        <h2>Create a New Game</h2>
+                        <label>Name</label>
+                        <input type="text" 
+                        onChange={this.handleChange} value={this.state.name}/>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                </section>
             </div>
         );
     }

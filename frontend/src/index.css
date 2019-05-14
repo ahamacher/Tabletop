@@ -241,20 +241,20 @@ code {
   font-weight: 500;
 }
 
-#session-form-inputs {
+.session-form-inputs {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-#session-form-inputs label {
+.session-form-inputs label {
   color: lightgray;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
 }
 
-#session-form-inputs input {
+.session-form-inputs input {
   width: 100%;
   height: 40px;
   margin: 10px 0 10px 0;
@@ -292,3 +292,23 @@ code {
   text-decoration: underline;
   color: lightgray;
 }
+
+.create-game-form-body {
+  height: 280px;
+}
+
+.create-game-form h2 {
+  margin-bottom: 20px;
+}
+
+.create-game-form input[type="submit"] {
+  background-color: #FAA619;
+  color: white;
+  font-weight: 700;
+}
+
+.create-game-form input[type="submit"]:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+

@@ -56,7 +56,7 @@ class SignupForm extends Component {
           <section className="session-errors">
             {this.errorsRender()}
           </section>
-          <form id='session-form-inputs' onSubmit={this.handleSubmit}>
+          <form className='session-form-inputs' onSubmit={this.handleSubmit}>
            <label>Username</label>
             <input 
               type="text"

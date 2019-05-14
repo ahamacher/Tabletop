@@ -60,7 +60,7 @@ class LoginForm extends Component {
           <section className="session-errors">
             {this.errorsRender()}
           </section>
-          <form id='session-form-inputs' onSubmit={this.handleSubmit}>
+          <form className='session-form-inputs' onSubmit={this.handleSubmit}>
             <label>Email</label>
             <input 
               type="email"

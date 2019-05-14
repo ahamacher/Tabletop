@@ -8,30 +8,34 @@ export const receiveGames = (games) => ({
   games
 });
 
-export const receiveGame = (game) => ({
+export const receiveGame = (game) => {
+  return ({
   type: RECEIVE_GAME,
   game
-});
+})
+};
 
 export const fetchGameById = (gameId) => (dispatch) => (
   gameApiUtil.fetchGamebyGameId(gameId)
-  .then(game => dispatch(receiveGame(game)))
+  .then(res => {
+   return dispatch(receiveGame(res.data))
+  })
 );
 
 export const fetchAllGames = () => dispatch => (
-  gameApiUtil.fetchAllGames().then(games => 
-    dispatch(receiveGames(games.data))  
+  gameApiUtil.fetchAllGames().then(res => 
+    dispatch(receiveGames(res.data))  
   )
 );
 
 export const joinGame = gameId => dispatch => (
-  gameApiUtil.joinGame(gameId).then(game =>
-    dispatch(receiveGame(game))
+  gameApiUtil.joinGame(gameId).then(res =>
+    dispatch(receiveGame(res.data))
   )
 );
 
 export const createGame = game => dispatch => (
   gameApiUtil.createGame(game).then(res => 
-    dispatch(receiveGame(res))  
+    dispatch(receiveGame(res.data))  
   )
 );

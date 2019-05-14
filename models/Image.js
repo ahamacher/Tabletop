@@ -12,19 +12,19 @@ const ImageSchema = new Schema({
         default: [0,0]
     },
     scalefactor: {
-        type: Float,
+        type: Schema.Types.Decimal128,
         required: true,
         default: 1.0 
     },
     layer_id: {
-        type: Integer,
+        type: Number,
         required: true
     },
     game_id: {
-        type: Integer,
+        type: Number,
         required: true
     },
 
 })
 
-module.exports = User = mongoose.model('images', ImageSchema);
+module.exports = Image = mongoose.model('images', ImageSchema);

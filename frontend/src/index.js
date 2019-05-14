@@ -6,6 +6,9 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './utils/session_api_util';
 import { logout } from './actions/session_actions';
 
+import axios from "axios";
+import { fetchMessagesByGameId, createMessage } from "./actions/messages_actions";
+
 import './index.css';
 // import App from './App';
 // import * as serviceWorker from './serviceWorker';
@@ -28,6 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore({});
   }
   const root = document.getElementById('root');
+
+  // BEGIN DEV BLOCK
+
+  window.axios = axios;
+  window.fetchMessagesByGameId = fetchMessagesByGameId;
+  window.createMessage = createMessage;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  // END DEV BLOCK
 
   ReactDOM.render(<Root store={store} />, root);
 })

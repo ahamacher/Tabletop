@@ -19,7 +19,10 @@ export const receiveImage = ( image ) => {
 
 
 export const fetchImages = (id) => dispatch => (
-    ImageAPIutil.getImagesByGameId(id).then(payload => dispatch(receiveImages(payload)))
+    ImageAPIutil.getImagesByGameId(id)
+        .then(payload => {
+            dispatch(receiveImages(payload.data))
+        })
 );
 
 

@@ -23,7 +23,7 @@ export const createImageInstance = (imageId) => dispatch => (
         .then((res) => dispatch(receiveImageInstance(res.data)))
 );
 
-export const updateImageInstance = (imageInstanceId, updateParams) => dispatch => (
+export const updateImageInstance = (imageInstanceId, updateParams) => dispatch => {
     imageInstanceApiUtil.updateImageInstance(imageInstanceId, updateParams)
         .then(res => dispatch(receiveImageInstance(res.data)))
-);
+};

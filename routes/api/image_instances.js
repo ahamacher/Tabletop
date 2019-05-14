@@ -36,6 +36,7 @@ router.put("/:image_instance_id", (req, res) => {
 
     ImageInstance.findOneAndUpdate( {_id: req.params.image_instance_id}, updateParams, {new: true})
         .then(imageInstance => (res.json(imageInstance))) 
+        .catch(err => res.status(404).json({ noimageinstancesfound: "No image instance found"}))
 })
 
 

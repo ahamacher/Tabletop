@@ -8,10 +8,9 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    
     return ({
-        fetchImages: () => dispatch(fetchImages(ownProps.match.params.groupId)),
-        createImage: (image) => dispatch(createImage(ownProps.match.params.groupId, image))
+        fetchImages: () => dispatch(fetchImages(ownProps.match.params.gameId)),
+        createImage: (image) => dispatch(createImage(ownProps.match.params.gameId, image))
     })
 };
 

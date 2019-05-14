@@ -352,6 +352,15 @@ code {
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  position: relative;
+  top: 0;
+  transition: top ease 0.2s;
+
+}
+
+.game-index-item:hover {
+  opacity: .9;
+  top: -5px;
 }
 
 .game-index-item h2 {

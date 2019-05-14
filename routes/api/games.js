@@ -43,9 +43,8 @@ router.put('/:id',
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        console.log(req.body)
         const newGame = new Game({
-            name: req.body.name,
+            name: req.body.game.name,
             gameMaster: req.user.id,
             users: [req.user.id]
         });

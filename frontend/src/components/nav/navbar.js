@@ -16,7 +16,7 @@ class NavBar extends Component {
     if (this.props.loggedIn) {
       return (
         <div className="nav-links">
-          <Link to={'/game/new'}>Create new tabletop</Link>
+          <Link to={'/games/new'}>Create new tabletop</Link>
           <Link to={'/games'}>Current games</Link>
           <button onClick={() => this.props.logout()}>Logout</button>
         </div>
@@ -34,7 +34,7 @@ class NavBar extends Component {
   render(){
     return(
       <div className="nav-container">
-        <Link to="/"><h2><i class="fas fa-dice-d20"></i>TableTop</h2></Link>
+        <Link to="/"><h2><i className="fas fa-dice-d20"></i>TableTop</h2></Link>
         { this.getLinks() }
       </div>
     )

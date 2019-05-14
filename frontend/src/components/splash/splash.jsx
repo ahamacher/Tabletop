@@ -11,7 +11,7 @@ const Splash = () => (
                 <Link to="/signup">Sign Up</Link>
             </section>
         </section>
-        <i class="fas fa-dice-d20"></i>
+        <i className="fas fa-dice-d20"></i>
     </section>
 );
 

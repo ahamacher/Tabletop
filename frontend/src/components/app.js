@@ -17,8 +17,7 @@ import NavBarContainer from './nav/navbar_container';
 import MessagesPage from "./messages/messages_page";
 import ImagesContainer from './images/images_container';
 import GameContainer from './game/game_container';
-
-
+import GameFormContainer from './game_form/game_form_container'
 
 
 const App = () => (
@@ -29,6 +28,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/messages/:groupId" component={MessagesPage} />
+      <ProtectedRoute exact path="/games/new" component={GameFormContainer} />
       <ProtectedRoute exact path="/games/:gameId" component={GameContainer} />
       <ProtectedRoute exact path="/messages" component={MessagesPage} />
       <ProtectedRoute exact path="/images" component={ImagesContainer} />

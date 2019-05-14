@@ -4,14 +4,14 @@ export const fetchGamebyGameId = (gameId) => {
   return axios.get(`/api/games/${gameId}`)
 }
 
-export const createGame = (name) => {
+export const createGame = (game) => {
   return axios.post(`/api/games/`, {
-    name
+    game
   })
 }
 
 export const joinGame = gameId => {
-  return axios.put(`api/games/${gameId}`)
+  return axios.put(`/api/games/${gameId}`)
 }
 
 export const fetchAllGames = () => {

@@ -9,8 +9,6 @@ class GamePage extends Component {
   }
 
   render() {
-    let res = getImagesByGameId(1);
-    debugger
     return (
       <h1>LOGGED INTO THE GAME PAGE</h1>
     )

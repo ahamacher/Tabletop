@@ -20,7 +20,7 @@ export const fetchGameById = (gameId) => (dispatch) => (
 
 export const fetchAllGames = () => dispatch => (
   gameApiUtil.fetchAllGames().then(games => 
-    dispatch(receiveGames(games))  
+    dispatch(receiveGames(games.data))  
   )
 );
 

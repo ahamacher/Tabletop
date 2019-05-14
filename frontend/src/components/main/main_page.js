@@ -1,13 +1,16 @@
 import React from 'react';
 import Splash from '../splash/splash';
+import GamesIndexContainer from '../games/games_index_container';
 
 const MainPage = ({loggedIn}) => {
   if (!loggedIn) {
-    debugger
     return <Splash />
   } else {
-    debugger
-    return <h1>Authenticated Main Page</h1>
+    return (
+      <div>
+        <GamesIndexContainer />
+      </div>
+    )
   }
 }
 

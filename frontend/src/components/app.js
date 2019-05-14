@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../utils/route_util';
 import { Switch } from 'react-router-dom';
 import HTML5Backend from 'react-dnd-html5-backend'
@@ -21,7 +21,7 @@ import GameFormContainer from './game_form/game_form_container'
 
 
 const App = () => (
-  <div>
+  <div id="main">
     <NavBarContainer />
     <Switch>
       <Route exact path="/" component={MainPageContainer} />
@@ -32,6 +32,7 @@ const App = () => (
       <ProtectedRoute exact path="/games/:gameId" component={GameContainer} />
       <ProtectedRoute exact path="/messages" component={MessagesPage} />
       <ProtectedRoute exact path="/images" component={ImagesContainer} />
+      <Redirect to="/" />
     </Switch>
   </div>
 );

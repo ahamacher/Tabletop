@@ -114,6 +114,16 @@ code {
   width: 100vw;
   height: 100vh;
   background-color: #25252A;
+  position: relative;
+  overflow: hidden;
+}
+
+#splash .fa-dice-d20 {
+  color: white;
+  position: absolute;
+  font-size: 600px;
+  right: -120px;
+  bottom: -100px;
 }
 
 #splash-content {

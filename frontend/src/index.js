@@ -8,6 +8,7 @@ import { logout } from './actions/session_actions';
 
 import axios from "axios";
 import { fetchMessagesByGameId, createMessage } from "./actions/messages_actions";
+import { fetchImageInstancesByGameId, createImageInstance, updateImageInstance } from "./actions/image_instance_actions";
 
 import './index.css';
 // import App from './App';
@@ -37,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.axios = axios;
   window.fetchMessagesByGameId = fetchMessagesByGameId;
   window.createMessage = createMessage;
+  window.fetchImageInstancesByGameId = fetchImageInstancesByGameId;
+  window.createImageInstance = createImageInstance;
+  window.updateImageInstance = updateImageInstance;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   // END DEV BLOCK

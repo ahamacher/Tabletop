@@ -38,7 +38,7 @@ router.put("/:image_instance_id", (req, res) => {
     const updateParams = req.body;
 
     ImageInstance.findOneAndUpdate( {_id: req.params.image_instance_id}, updateParams, {new: true})
-    .populate(image_id)
+    .populate("image_id")
         .then(imageInstance => {
             req.app.io.in(imageInstance.image_id.game_id).emit("image-instance", imageInstance);
             return res.json(imageInstance);

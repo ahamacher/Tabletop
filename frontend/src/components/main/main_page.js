@@ -1,12 +1,13 @@
 import React from 'react';
 import Splash from '../splash/splash';
 
-class MainPage extends React.Component {
-
-  render() {
-    return (
-      <Splash />
-    )
+const MainPage = ({loggedIn}) => {
+  if (!loggedIn) {
+    debugger
+    return <Splash />
+  } else {
+    debugger
+    return <h1>Authenticated Main Page</h1>
   }
 }
 

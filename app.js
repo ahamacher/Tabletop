@@ -2,6 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const users = require("./routes/api/users");
 const tweets = require("./routes/api/tweets");
+const messages = require("./routes/api/messages");
+
+const images = require('./routes/api/images');
+
 const bodyParser = require("body-parser");
 const db = require("./config/keys").mongoURI;
 const passport = require('passport');
@@ -23,6 +27,8 @@ require('./config/passport')(passport);
 
 app.use("/api/users", users);
 app.use("/api/tweets", tweets);
+app.use("/api/messages", messages);
+app.use("/api/images", images);
 
 
 const port = process.env.PORT || 5000;

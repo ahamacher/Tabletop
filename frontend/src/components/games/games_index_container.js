@@ -5,7 +5,7 @@ import { fetchAllGames } from '../../actions/game_actions';
 const mapStateToProps = state => {
     return {
         currentUser: state.session.user,
-        games: state.entities.games 
+        games: Object.values(state.entities.games)
     }
 }
 

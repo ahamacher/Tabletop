@@ -24,5 +24,5 @@ export const receiveItems = (items) => {
 //need an update item endpoint 
 
 export const fetchItems = (gameId) => dispatch => {
-    return ImagesAPIUtil.getImagesByGameId(gameId).then((items) => dispatch(receiveItems(items)))
+    return ImagesAPIUtil.getImagesByGameId(gameId).then((res) => dispatch(receiveItems(res.data)))
 } 

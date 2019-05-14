@@ -34,7 +34,7 @@ const upload = multer({
 
 // Index page of all images in a specific game
 router.get('/game/:game_id/images', (req, res) => {
-    Image.find({game: req.params.game_id})
+    Image.find({game_id: req.params.game_id})
         .then(images => res.json(images))
         .catch( err => res.status(404).json({ noimagesfound: 'No images available in that game.'}));
 });

@@ -28,11 +28,19 @@ io.on('connection', function(socket) {
   console.log('a user connected');
   socket.on('disconnect', function() {
     console.log('a user disconnected');
-  })
-  socket.on('communication', data => {
-    
-  })
+  });
+  socket.on('conversation', data => {
+    console.log(data);
+    io.in(data.room).emit('conversation', data.message);
+  });
+  socket.on('join', room => {
+    console.log(`a user connected to room: ${room}`)
+    socket.join(room);
+  });
 })
+io.listen(8000);
+// end socket 
+
 
 app.use(passport.initialize());
 require('./config/passport')(passport);

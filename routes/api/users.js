@@ -8,6 +8,9 @@ const validateLoginInput = require('../../validation/login');
 const validateRegisterInput = require('../../validation/register');
 const passport = require('passport');
 
+// come back later and fix the res => res.json(...)
+// deconstruct to only show information we want to have
+
 router.get("/test", (req, res) => res.json({ msg: "this is the users route" }));
 
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {

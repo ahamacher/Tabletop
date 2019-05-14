@@ -18,6 +18,7 @@ import MessagesPage from "./messages/messages_page";
 import ImagesContainer from './images/images_container';
 import GameContainer from './game/game_container';
 import GameFormContainer from './game_form/game_form_container'
+import ImageInstancesContainer from "./images/image_instances_container"
 
 
 const App = () => (
@@ -32,6 +33,7 @@ const App = () => (
       <ProtectedRoute exact path="/games/:gameId" component={GameContainer} />
       <ProtectedRoute exact path="/messages" component={MessagesPage} />
       <ProtectedRoute exact path="/images" component={ImagesContainer} />
+      <ProtectedRoute path="/image_instances/:gameId" component={ImageInstancesContainer} />
     </Switch>
   </div>
 );

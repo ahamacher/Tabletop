@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const users = require("./routes/api/users");
-const tweets = require("./routes/api/tweets");
 const messages = require("./routes/api/messages");
 const games = require("./routes/api/games");
 const images = require('./routes/api/images');
@@ -26,7 +25,6 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 app.use("/api/users", users);
-app.use("/api/tweets", tweets);
 app.use("/api/messages", messages);
 app.use("/api/images", images);
 app.use("/api/games", games);

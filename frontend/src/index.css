@@ -357,6 +357,7 @@ code {
 .game-index-item h2 {
   font-weight: 700;
   font-size: 18px;
+  margin-bottom: 5px;
 }
 
 .game-index-item-info {

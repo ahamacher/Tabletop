@@ -8,14 +8,18 @@ class GamesIndex extends React.Component {
     }
 
     render() {
-        const games = Object.values(this.props.games).map((game) => <GameIndexItem key={game._id} currentUser={this.props.currentUser} game={game}/>)
-        return (
-            <div className="games-index-page">
-                <ul className="games-index">
-                    {games}
-                </ul>
-            </div>
-        );
+        if (this.props.games) {
+            const games = Object.values(this.props.games).map((game) => <GameIndexItem key={game._id} currentUser={this.props.currentUser} game={game}/>)
+            return (
+                <div className="games-index-page">
+                    <ul className="games-index">
+                        {games}
+                    </ul>
+                </div>
+            );
+        } else {
+            return null;
+        }
     }
 }
 

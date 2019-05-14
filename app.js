@@ -21,6 +21,19 @@ app.get('/', (req, res) => res.send("Hello World!"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Socket.io
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+io.on('connection', function(socket) {
+  console.log('a user connected');
+  socket.on('disconnect', function() {
+    console.log('a user disconnected');
+  })
+  socket.on('communication', data => {
+    
+  })
+})
+
 app.use(passport.initialize());
 require('./config/passport')(passport);
 

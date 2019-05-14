@@ -1,4 +1,4 @@
-import { RECEIVE_ITEM, RECEIVE_ITEMS } from '../actions/game_actions';
+import { RECEIVE_ITEM, RECEIVE_ITEMS } from '../actions/item_actions';
 
 export default (state={}, action) => {
     Object.freeze(state);

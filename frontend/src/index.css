@@ -71,6 +71,10 @@ code {
     monospace;
 }
 
+#main {
+  position: relative;
+}
+
 /* NAV BAR */
 
 .nav-container {
@@ -80,6 +84,9 @@ code {
   height: 50px;
   padding: 0 20px 0 20px;
   background-color: #25252A;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
 .nav-container a {
@@ -213,6 +220,8 @@ code {
   line-height: 1;
   min-height: 50px;
   margin-bottom: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .session-form-body {
@@ -310,5 +319,77 @@ code {
 .create-game-form input[type="submit"]:hover {
   cursor: pointer;
   opacity: .8;
+}
+
+/* GAMES INDEX */
+
+.games-index-page {
+  background-color: #25252A;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.games-index {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 40px;
+  margin-bottom: 50px;
+}
+
+.game-index-item {
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 3px;
+  padding: 20px;
+  width: 150px;
+  height: 200px;
+  margin: 5px;
+  text-decoration: none;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  top: 0;
+  transition: top ease 0.2s;
+
+}
+
+.game-index-item:hover {
+  opacity: .9;
+  top: -5px;
+}
+
+.game-index-item h2 {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.game-index-item-info {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: lightgray;
+}
+
+.fa-dungeon, .fa-dot-circle {
+  margin-right: 5px;
+}
+
+.game-index-item-info .gm {
+  color: #FAA619;
+}
+
+.game-index-item-info .live {
+  color: green;
+}
+
+.game-index-item-info .finished {
+  color: red;
 }
 

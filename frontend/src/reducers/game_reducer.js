@@ -6,7 +6,11 @@ import {
 const GameReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_ALL_GAMES:
-      return action.games;
+      const newState = {};
+      for (let i = 0; i < action.games.length; i++) {
+        newState[action.games[i]._id] = action.games[i]
+      }
+      return newState;
     case RECEIVE_GAME:
       return action.game
     default:

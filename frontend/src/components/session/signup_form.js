@@ -54,6 +54,9 @@ class SignupForm extends Component {
       <div className="session-form">
         <section className="session-form-body signup">
           <h2>Signup for Tabletop</h2>
+          <section className="session-errors">
+            {this.errorsRender()}
+          </section>
           <form id='session-form-inputs' onSubmit={this.handleSubmit}>
            <label>Username</label>
             <input 

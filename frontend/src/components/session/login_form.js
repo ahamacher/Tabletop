@@ -57,6 +57,9 @@ class LoginForm extends Component {
       <div className="session-form login">
         <section className="session-form-body">
           <h2>Login to Tabletop</h2>
+          <section className="session-errors">
+            {this.errorsRender()}
+          </section>
           <form id='session-form-inputs' onSubmit={this.handleSubmit}>
             <label>Email</label>
             <input 
@@ -68,7 +71,6 @@ class LoginForm extends Component {
               type="password"
               onChange={this.update('password')}
             />
-            {this.errorsRender()}
           <button type="submit">Login</button>
           <button type="button" onClick={() => this.handleDemo()}>Demo User</button>
           </form>

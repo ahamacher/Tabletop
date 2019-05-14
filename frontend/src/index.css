@@ -3,6 +3,8 @@
    License: none (public domain)
 */
 
+/* RESET CSS */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -53,6 +55,8 @@ table {
 	border-spacing: 0;
 }
 
+/* MAIN FILE */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -67,6 +71,8 @@ code {
     monospace;
 }
 
+/* NAV BAR */
+
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -74,6 +80,10 @@ code {
   height: 50px;
   padding: 0 20px 0 20px;
   background-color: #25252A;
+}
+
+.nav-container a {
+  text-decoration: none;
   color: #FFFFFF;
 }
 
@@ -97,6 +107,8 @@ code {
 .fa-dice-d20 {
   margin-right: 7px;
 }
+
+/* SPLASH */
 
 #splash {
   width: 100vw;
@@ -154,3 +166,89 @@ code {
   opacity: .9;
 }
 
+/* SESSION FORM */
+
+.session-form {
+  background-color: #2F3136;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.session-form-body {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #25252A;
+  background-color: #25252A;
+  padding: 40px;
+  box-sizing: border-box;
+  margin-top: 30px;
+  position: relative;
+}
+
+.signup {
+  height: 500px;
+}
+
+.session-form-body h2 {
+  color: lightgray;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+#session-form-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#session-form-inputs label {
+  color: lightgray;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#session-form-inputs input {
+  width: 100%;
+  height: 40px;
+  margin: 10px 0 10px 0;
+  border-radius: 2px;
+  background-color: #2F3136;
+  border: 1px solid #1E1E1E;
+}
+
+.session-form-body button {
+  height: 40px;
+  background-color: #FAA619;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 3px;
+  margin-top: 15px;
+}
+
+.session-form-body button:hover {
+  opacity: .9;
+  cursor: pointer;
+}
+
+.session-form-footer {
+  position: absolute;
+  color: lightgray;
+  font-size: 16px;
+  bottom: 20px;
+}
+
+.session-form-footer a {
+  text-decoration: underline;
+  color: lightgray;
+}

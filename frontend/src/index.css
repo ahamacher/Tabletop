@@ -247,6 +247,8 @@ code {
   border-radius: 2px;
   background-color: #2F3136;
   border: 1px solid #1E1E1E;
+  color: white;
+  font-size: 16px;
 }
 
 .session-form-body button {

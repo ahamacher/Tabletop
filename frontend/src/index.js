@@ -6,6 +6,8 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './utils/session_api_util';
 import { logout } from './actions/session_actions';
 
+import axios from "axios";
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -28,6 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore({});
   }
   const root = document.getElementById('root');
+
+  // BEGIN DEV BLOCK
+
+  window.axios = axios
+  // END DEV BLOCK
 
   ReactDOM.render(<Root store={store} />, root);
 })

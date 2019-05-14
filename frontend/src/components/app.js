@@ -11,6 +11,7 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import NavBarContainer from './nav/navbar_container';
 import GamePage from './game/game_page.js';
+import MessagesPage from "./messages/messages_page";
 
 
 const App = () => (
@@ -21,6 +22,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/game" component={GamePage} />
+      <ProtectedRoute exact path="/messages" component={MessagesPage} />
     </Switch>
   </div>
 );

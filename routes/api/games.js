@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
 router.post('/',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-
+        console.log(req.body)
         const newGame = new Game({
             name: req.body.name,
             gameMaster: req.user.id

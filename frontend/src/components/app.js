@@ -1,6 +1,9 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../utils/route_util';
 import { Switch } from 'react-router-dom';
+import GameCanvas from './canvas/game_canvas';
+import HTML5Backend from 'react-dnd-html5-backend'
+import { DragDropContext } from 'react-dnd'
 
 //leaving this temporarly here
 import MainPage from './main/main_page';
@@ -22,4 +25,5 @@ const App = () => (
   </div>
 );
 
-export default App;
+export default DragDropContext(HTML5Backend)(App)
+

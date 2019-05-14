@@ -21,8 +21,10 @@ export const receiveItems = (items) => {
 
 //need a delete item endpoint 
 
-//need an update item endpoint 
-
 export const fetchItems = (gameId) => dispatch => {
     return ImagesAPIUtil.getImagesByGameId(gameId).then((res) => dispatch(receiveItems(res.data)))
 } 
+
+export const updateItem = (item) => dispatch => {
+    //
+}

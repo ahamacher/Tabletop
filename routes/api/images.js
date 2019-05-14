@@ -37,7 +37,7 @@ const upload = multer({
 router.get('/game/:game_id', (req, res) => {
     Image.find({game_id: req.params.game_id})
         .then(images => res.json(images))
-        .catch( err => res.status(404).json({ noimagesfound: 'No images available in that game.'}));
+        .catch(err => res.status(404).json({ noimagesfound: 'No images available in that game.'}));
 });
 
 // Create an image in a game. How are we threading layers into this?

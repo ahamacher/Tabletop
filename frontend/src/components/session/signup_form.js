@@ -50,34 +50,39 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <div className="session-form login">
-        <h2>Signup for Tabletop</h2>
-        <form onSubmit={this.handleSubmit}>
-          <input 
-            type="text"
-            placeholder="Username"
-            onChange={this.update('username')}
-          />
-          <input
-            type="email"
-            placeholder="Enter e-mail"
-            onChange={this.update('email')}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={this.update('password')}
-          />
-          <input 
-            type="password"
-            placeholder="Confirm Password"
-            onChange={this.update('password2')}
-          />
-          <button type="submit">Login</button>
-        </form>
-          <div className="session-form-footer">
-          Already have an account? <Link to={'/login'}>Login</Link>
-          </div>
+      <div className="session-form">
+        <section className="session-form-body signup">
+          <h2>Signup for Tabletop</h2>
+          <section className="session-errors">
+            {this.errorsRender()}
+          </section>
+          <form id='session-form-inputs' onSubmit={this.handleSubmit}>
+           <label>Username</label>
+            <input 
+              type="text"
+              onChange={this.update('username')}
+            />
+            <label>Email</label>
+            <input
+              type="email"
+              onChange={this.update('email')}
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              onChange={this.update('password')}
+            />
+            <label>Verify Password</label>
+            <input 
+              type="password"
+              onChange={this.update('password2')}
+            />
+            <button type="submit">Signup</button>
+          </form>
+            <div className="session-form-footer">
+            Already have an account? <Link to={'/login'}>Login</Link>
+            </div>
+          </section>
       </div>
     );
   }

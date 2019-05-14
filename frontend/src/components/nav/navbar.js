@@ -34,6 +34,7 @@ class NavBar extends Component {
   render(){
     return(
       <div className="nav-container">
+        <Link to="/"><h2><i class="fas fa-dice-d20"></i>TableTop</h2></Link>
         { this.getLinks() }
       </div>
     )

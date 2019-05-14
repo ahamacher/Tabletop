@@ -1,3 +1,62 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/* RESET CSS */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* MAIN FILE */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -10,4 +69,212 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* NAV BAR */
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px 0 20px;
+  background-color: #25252A;
+}
+
+.nav-container a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.nav-container h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.nav-links a {
+  margin-left: 12px;
+  text-decoration: none;
+  color: lightgray;
+  font-size: 16px;
+}
+
+.nav-links a:hover {
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.fa-dice-d20 {
+  margin-right: 7px;
+}
+
+/* SPLASH */
+
+#splash {
+  width: 100vw;
+  height: 100vh;
+  background-color: #25252A;
+  position: relative;
+  overflow: hidden;
+}
+
+#splash .fa-dice-d20 {
+  color: white;
+  position: absolute;
+  font-size: 600px;
+  right: -120px;
+  bottom: -100px;
+  z-index: 0;
+}
+
+#splash-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;  
+}
+
+#splash-content h1 {
+  width: 80vw;
+  color: #FFFFFF;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  text-align: center;
+  z-index: 100;
+}
+
+#splash-content p {
+  color: lightgray;
+  font-size: 16px;
+  margin-bottom: 30px;
+  text-align: center;
+  z-index: 100;
+
+}
+
+#splash-buttons {
+  display: flex;
+  z-index: 100;
+}
+
+#splash-buttons a {
+  min-width: 120px;
+  text-decoration: none;
+  margin-left: 20px;
+  color: #25252A;
+  background-color: white; 
+  border-radius: 5px;
+  padding: 10px 0 10px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+#splash-buttons a:last-child {
+  color: white;
+  background-color: #FAA619; 
+}
+
+#splash-buttons a:hover {
+  opacity: .9;
+}
+
+/* SESSION FORM */
+
+.session-form {
+  background-color: #2F3136;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.session-errors {
+  color: red;
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1;
+  min-height: 50px;
+  margin-bottom: 5px;
+}
+
+.session-form-body {
+  width: 400px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #25252A;
+  background-color: #25252A;
+  padding: 30px;
+  box-sizing: border-box;
+  margin-top: 30px;
+  position: relative;
+}
+
+.signup {
+  height: 550px;
+}
+
+.session-form-body h2 {
+  color: lightgray;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#session-form-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#session-form-inputs label {
+  color: lightgray;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#session-form-inputs input {
+  width: 100%;
+  height: 40px;
+  margin: 10px 0 10px 0;
+  border-radius: 2px;
+  background-color: #2F3136;
+  border: 1px solid #1E1E1E;
+  color: white;
+  font-size: 16px;
+}
+
+.session-form-body button {
+  height: 40px;
+  background-color: #FAA619;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 3px;
+  margin-top: 15px;
+}
+
+.session-form-body button:hover {
+  opacity: .9;
+  cursor: pointer;
+}
+
+.session-form-footer {
+  position: absolute;
+  color: lightgray;
+  font-size: 16px;
+  bottom: 20px;
+}
+
+.session-form-footer a {
+  text-decoration: underline;
+  color: lightgray;
 }

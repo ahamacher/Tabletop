@@ -99,6 +99,20 @@ code {
   font-size: 16px;
 }
 
+.nav-links button {
+  margin-left: 12px;
+  text-decoration: none;
+  color: lightgray;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+}
+
+.nav-links button:hover {
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
 .nav-links a:hover {
   color: #FFFFFF;
   cursor: pointer;
@@ -259,7 +273,7 @@ code {
   font-weight: 600;
   border: none;
   border-radius: 3px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .session-form-body button:hover {

@@ -1,11 +1,15 @@
 import React from 'react';
 import Splash from '../splash/splash';
+import GamesIndexContainer from '../games/games_index_container';
 
-class MainPage extends React.Component {
-
-  render() {
+const MainPage = ({loggedIn}) => {
+  if (!loggedIn) {
+    return <Splash />
+  } else {
     return (
-      <Splash />
+      <div>
+        <GamesIndexContainer />
+      </div>
     )
   }
 }

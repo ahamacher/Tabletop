@@ -1,5 +1,4 @@
 import React from 'react';
-// import ImageItem from './image_item';
 
 class Images extends React.Component {
     constructor(props) {

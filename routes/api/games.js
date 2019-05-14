@@ -22,6 +22,7 @@ router.get('/:id', (req, res) => {
             res.status(404).json({ nogamefound: 'No game found with that ID' })
         );
 });
+
 // game join
 router.put('/:id', 
     passport.authenticate('jwt', { session: false }),

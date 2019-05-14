@@ -28,6 +28,7 @@ router.get("/:id", (req, res) => {
         .catch(err => 
             res.status(404).json({nomessagefound: "No message found with that ID"}))
 })
+
 // #TODO what's stopping someone from posting message to any other game?
 router.post("/game/:game_id",
     passport.authenticate("jwt", {session: false}),
@@ -46,7 +47,9 @@ router.post("/game/:game_id",
             text: req.body.text
         })
 
-        newMessage.save().then(message => res.json(message));
+        newMessage.save().then(message => {
+            req.app.io.in(req.params.game_id).emit('new-message', message);
+            return res.json(message)});
     }
 );
 

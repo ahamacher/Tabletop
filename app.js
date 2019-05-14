@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const users = require("./routes/api/users");
 const tweets = require("./routes/api/tweets");
 const messages = require("./routes/api/messages");
-
+const games = require("./routes/api/games");
 const images = require('./routes/api/images');
 
 const bodyParser = require("body-parser");
@@ -29,6 +29,7 @@ app.use("/api/users", users);
 app.use("/api/tweets", tweets);
 app.use("/api/messages", messages);
 app.use("/api/images", images);
+app.use("/api/games", games);
 
 
 const port = process.env.PORT || 5000;

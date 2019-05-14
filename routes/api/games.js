@@ -14,10 +14,13 @@ router.get('/', (req, res) => {
 
 // game show
 router.get('/:id', (req, res) => {
+    console.log(req.params.id);
     Game.findById(req.params.id)
         .populate("gameMaster")
         .populate("users")
-        .then(game => res.json(game))
+        .then(game => {
+            return res.json(game);
+        })
         .catch(err =>
             res.status(404).json({ nogamefound: 'No game found with that ID' })
         );

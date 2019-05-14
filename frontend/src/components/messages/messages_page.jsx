@@ -13,7 +13,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    debugger;
     return {
     receiveMessage: message => dispatch(receiveMessage(message)),
     fetchMessages: () => dispatch(fetchMessagesByGameId(ownProps.gameId)),

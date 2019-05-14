@@ -73,12 +73,13 @@ router.get('/game/:game_id/images/:image_id'), (req, res) => {
 router.delete('/game/:game_id/images/:image_id'), (req, res) => {
     
     const image = Image.findById(req.params.id)
-        .then()
+        .then(image => image.delete())
         .catch(err =>
             res.status(404).json({ noimagefound: 'Image ID does not exist' }))
     
     image.delete()
 };
+
 
 module.exports = router;
 

@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const users = require("./routes/api/users");
 const tweets = require("./routes/api/tweets");
 const messages = require("./routes/api/messages");
+
 const images = require('./routes/api/images');
+
 const bodyParser = require("body-parser");
 const db = require("./config/keys").mongoURI;
 const passport = require('passport');

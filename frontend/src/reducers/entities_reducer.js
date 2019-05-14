@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
+
+import images from './images_reducer';
 import items from './items_reducer'
-import messagesReducer from "./messages_reducer";
+import messages from './messages_reducer';
 
 export default combineReducers({
     items,
-    messages: messagesReducer
+    images,
+    messages
 });

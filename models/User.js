@@ -17,7 +17,8 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  games: [{ type: Schema.Types.ObjectId, ref: 'games' }]
 })
 
 module.exports = User = mongoose.model('users', UserSchema);

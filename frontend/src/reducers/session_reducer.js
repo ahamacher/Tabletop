@@ -1,4 +1,8 @@
-import { RECEIVE_USER_LOGOUT } from '../actions/session_actions';
+import { 
+  RECEIVE_USER_LOGOUT, 
+  RECEIVE_USER_LOGIN, 
+  RECEIVE_CURRENT_USER 
+} from '../actions/session_actions';
 
 export default function( state = {}, action ) {
   switch (action.type){
@@ -7,6 +11,17 @@ export default function( state = {}, action ) {
         isAuthenticated: false,
         user: undefined
       };
+    case RECEIVE_USER_LOGIN:
+      return {
+        isSignedIn: true,
+        ...state
+      };
+    case RECEIVE_CURRENT_USER:
+      return {
+        ...state,
+        isAuthenticated: !!action.currentUser,
+        user: action.currentUser
+      }
     default: 
       return state;
   }

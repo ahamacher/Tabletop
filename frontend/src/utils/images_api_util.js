@@ -6,8 +6,8 @@ export const getImagesByGameId = (gameId) => {
 }
 
 export const createImage = (gameId, image) => {
-    return axios.post(`/api/images/game/${gameId}`), {
+    return axios.post(`/api/images/game/${gameId}`, {
         image
-    }
+    });
 }
 

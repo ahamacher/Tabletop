@@ -9,7 +9,7 @@ export default (state = {}, action) => {
             newState = Object.assign({}, keyBy(action.images, "_id"));
             return newState
         case RECEIVE_IMAGE:
-            return Object.assign({}, state, { [action.image.id]: action.image })
+            return Object.assign({}, state, { [action.image.id]: action.image });
         default:
             return state;
     }

@@ -1,18 +1,29 @@
 import React from 'react';
-import ImageItem from './image_item';
+
 
 class Images extends React.Component {
     constructor(props) {
         super(props);
+        
+        this.state = { url: ''}
+
+       
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
 
 
-    componentDidMount() {
-        this.props.fetchImages();
+    handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("url", this.state.url);
+        this.props.createImage(this.props.game_id, formData);
+
     }
 
-
+    update(field) {
+        return e => this.setState({ [field]: e.target.value })
+    }
 
     render(){
 
@@ -21,15 +32,25 @@ class Images extends React.Component {
                 <li>
                     <img src={image.url} key={image.id} />
                 </li>
+
             )
         });
 
 
         return(
             <div>
+
+            
+                <form onSubmit={this.handleSubmit} >
+                    Select image to upload:
+                    <input type="file" onChange={this.update('url')} />
+                    <input type="submit" value="Upload Image" name="submit" />
+                </form>
+
                <ul>
                    { images }
                </ul>
+               <button onClick={this.fetchImages}>See All Images</button>
             </div>
         )
     }

@@ -8,7 +8,7 @@ const receiveImageInstances = (imageInstances) => ({
     imageInstances
 });
 
-const receiveImageInstance = (imageInstance) => ({
+export const receiveImageInstance = (imageInstance) => ({
     type: RECEIVE_IMAGE_INSTANCE,
     imageInstance
 });

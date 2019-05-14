@@ -22,6 +22,27 @@ app.get('/', (req, res) => res.send("Hello World!"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Socket.io
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+io.on('connection', function(socket) {
+  console.log('a user connected');
+  socket.on('disconnect', function() {
+    console.log('a user disconnected');
+  });
+  socket.on('conversation', data => {
+    console.log(data);
+    io.in(data.room).emit('conversation', data.message);
+  });
+  socket.on('join', room => {
+    console.log(`a user connected to room: ${room}`)
+    socket.join(room);
+  });
+})
+io.listen(8000);
+// end socket 
+
+
 app.use(passport.initialize());
 require('./config/passport')(passport);
 

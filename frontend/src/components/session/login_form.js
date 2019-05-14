@@ -15,7 +15,7 @@ class LoginForm extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
       //subject to change based on actual route
-      this.props.history.push('/game');
+      this.props.history.push('/');
     }
     this.setState({ errors: nextProps.errors })
   }

@@ -12,6 +12,8 @@ import SignupFormContainer from './session/signup_form_container';
 import NavBarContainer from './nav/navbar_container';
 import GamePage from './game/game_page.js';
 import MessagesPage from "./messages/messages_page";
+import ImagesContainer from './images/images_container';
+
 
 
 const App = () => (
@@ -23,6 +25,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute exact path="/games/:gameId" component={GamePage} />
       <ProtectedRoute exact path="/messages" component={MessagesPage} />
+      <ProtectedRoute exact path="/images" component={ImagesContainer} />
     </Switch>
   </div>
 );

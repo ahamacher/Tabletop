@@ -1,5 +1,5 @@
 import React from 'react';
-import { DragSource } from 'react-dnd'
+import { DragSource, DragPreviewImage } from 'react-dnd'
 import { KNIGHT } from './items'
 
 const itemSource = {
@@ -11,21 +11,23 @@ const itemSource = {
 const collect = (connect, monitor) => {
   return {
     connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging(),
   }
 }
 
-const Item = ({ pieceImageURL, connectDragSource, isDragging }) => {
-  return connectDragSource (
-    <div
-      style={{
-        fontSize: 50,
-        fontWeight: 'bold',
-        cursor: 'move',
-      }}
-    >
-      {pieceImageURL !== undefined ? <img src={pieceImageURL} width="60" /> : null }
-    </div>
+const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging }) => {
+  return (
+    <>
+        <DragPreviewImage connect={connectDragPreview} src={pieceImageURL} width="60" />
+        <div
+          ref={connectDragSource}
+          style={{
+            cursor: 'move',
+          }}>
+          {pieceImageURL !== undefined ? <img src={pieceImageURL} width="60" /> : null}
+        </div>
+      </>
   )
 }
 

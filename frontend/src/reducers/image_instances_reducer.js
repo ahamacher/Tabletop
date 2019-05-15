@@ -12,9 +12,7 @@ export default (state = {}, action) => {
             }
             return newState;
         case RECEIVE_IMAGE_INSTANCE:
-            newState = merge({}, state);
-            newState[action.imageInstance._id] = action.imageInstance;
-            return newState;
+            return Object.assign({}, state, { [action.imageInstance._id] : action.imageInstance });
         case CLEAR_IMAGE_INSTANCES:
             return {};
         default:

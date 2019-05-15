@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import { fetchImageInstancesByGameId, updateImageInstance } from  '../../actions/image_instance_actions';
-
 import Grid from './grid';
 import { withRouter } from 'react-router-dom'
 

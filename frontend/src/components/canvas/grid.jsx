@@ -6,8 +6,6 @@ class Grid extends React.Component {
 
     constructor(props) {
         super(props);
-        // this.state = { pieces: { 0: { id: 0, x: 0, y: 0 }, 1: { id: 1, x: 0, y: 5 }, 2: { id: 2, x: 10, y: 12 } } };
-        // this.state = { pieces: {} };
         this.moveItem = this.moveItem.bind(this);
     }
 
@@ -28,8 +26,6 @@ class Grid extends React.Component {
         piece.positionY = pos[1];
         pieces[id] = piece;
         this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] });
-        // this.setState({ pieces: pieces }, 
-        // () => this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] }))
     }
 
     renderSquare(pos) {

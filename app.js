@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 const db = require("./config/keys").mongoURI;
 const passport = require('passport');
 const app = express();
+const path = require('path');
 
 
 mongoose
@@ -17,7 +18,12 @@ mongoose
 .then(() => console.log("Connected to MongoDb sucessfully"))
 .catch(err => console.log(err));
 
-app.get('/', (req, res) => res.send("Hello World!"));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

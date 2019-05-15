@@ -426,7 +426,7 @@ code {
 }
 
 .modal-button-ham:hover .fas {
-  color: white;
+  cursor: pointer;
 }
 
 .hidden {
@@ -441,19 +441,22 @@ code {
   right: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
   border: 1px solid rgba(255,255,255,.5);
   border-radius: 5px;
   padding: 20px;
   width: 200px;
 }
 
-.upload-form {
+.game-modal-container .upload-form {
   display: flex;
   flex-direction: column;
-
+  color: white;
+  text-align: center;
+  width: 100%;
 }
 
-.modal-button {
+.game-modal-container .modal-button {
   background-color: #FAA619;
   color: white;
   font-size: 16px;
@@ -461,15 +464,19 @@ code {
   border: none;
   border-radius: 3px;
   margin-top: 20px;
-  padding: 1px 7px 2px;
   height: 40px;
+  width: 180px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0;
 }
 
-.modal-button:hover {
+.game-modal-container .modal-button:hover {
   background-color: #FAA619;
+  cursor: pointer;
 }
 
-.inputfile {
+.game-modal-container .inputfile {
   width: .1px;
   height: .1px;
   opacity: 0;
@@ -478,7 +485,7 @@ code {
   z-index: -1;
 }
 
-.inputfile + label {
+.game-modal-container .inputfile + label {
     color: white;
     background-color: #FAA619;
     font-size: 16px;
@@ -489,7 +496,14 @@ code {
     align-items: center;
 }
 
-.inputfile:focus + label,
+.game-modal-container label {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-modal-container .inputfile:focus + label,
 .inputfile + label:hover {
     background-color: #FAA619;
 }

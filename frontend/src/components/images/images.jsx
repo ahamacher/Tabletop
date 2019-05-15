@@ -60,9 +60,9 @@ class Images extends React.Component {
 
             
                 <form onSubmit={this.handleSubmit} encType="multipart/form-data" className="upload-form">
-                    <div className="uplaod-head">Select image to upload:</div>
+                    <div className="upload-head">Select image to upload:</div>
                     <input type="file" onChange={this.handleImageFile} id="file" className="inputfile"/>
-                    <label for="file" className="modal-button">Choose a file</label>
+                    <label for="file" className="modal-button"><span>{this.state.image.name ? this.state.image.name : "Choose a file"}</span></label>
                     <input type="submit" value="Upload Image" name="submit" className="modal-button"/>
                 </form>
 

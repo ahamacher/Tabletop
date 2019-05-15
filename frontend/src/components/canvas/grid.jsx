@@ -7,7 +7,7 @@ class Grid extends React.Component {
     constructor(props) {
         super(props);
         // this.state = { pieces: { 0: { id: 0, x: 0, y: 0 }, 1: { id: 1, x: 0, y: 5 }, 2: { id: 2, x: 10, y: 12 } } };
-        this.state = this.props.pieces
+        this.state = { pieces: {} };
         this.moveItem = this.moveItem.bind(this);
     }
 
@@ -15,14 +15,20 @@ class Grid extends React.Component {
         this.props.fetchImageInstancesByGameId(this.props.match.params.gameId)
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.game === undefined || prevProps.game._id !== this.props.match.params.gameId) {
+            this.props.fetchImageInstancesByGameId(this.props.match.params.gameId).then((res) => this.setState({pieces: this.props.pieces }));
+        }
+    }
+
     moveItem(id, pos) {
-        const pieces = this.props.pieces; 
+        const { pieces } = this.props;
         const piece = pieces[id];
         piece.positionX = pos[0];
         piece.positionY = pos[1];
         pieces[id] = piece;
-        this.setState({ pieces: pieces })
-        // call update method
+        this.setState({ pieces: pieces }, 
+        () => this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] }))
     }
 
     renderSquare(pos) {
@@ -43,7 +49,7 @@ class Grid extends React.Component {
     }
 
     getPiece(pos) {
-        const pieces = this.props.pieces;
+        const { pieces }  = this.props;
         for (let p in pieces) {
             if (pieces[p].positionX === pos[0] && pieces[p].positionY === pos[1]) {
                 const piece = pieces[p];

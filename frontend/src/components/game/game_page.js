@@ -18,7 +18,7 @@ class GamePage extends Component {
   }
 
   componentDidMount() {
-    const endpoint = 'http://localhost:8000';
+    const endpoint = process.env.PORT || 'http://localhost:8000';
     const socket = socketIOClient(endpoint);
     socket.on("conversation", data => this.setState({ response: this.state.response.concat([data]) }))
     this.socket = socket

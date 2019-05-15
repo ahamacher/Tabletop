@@ -35,7 +35,7 @@ class MessagesPage extends React.Component {
     }   
 
     componentDidMount(){
-        const endpoint = 'http://localhost:8000';
+        const endpoint = process.env.PORT || 'http://localhost:8000';
         const socket = socketIOClient(endpoint);
         const { gameId } = this.props;
         socket.emit('join', gameId);

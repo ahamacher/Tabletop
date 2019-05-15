@@ -19,6 +19,10 @@ class Grid extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.props.clearImageInstances();
+    }
+
     moveItem(id, pos) {
         const { pieces } = this.props;
         const piece = pieces[id];

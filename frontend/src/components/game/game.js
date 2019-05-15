@@ -23,7 +23,7 @@ class Game extends Component {
     fetchImages();
     fetchImageInstances();
     fetchGameById(gameId);
-    const endpoint = process.env.PORT || 'http://localhost:8000';
+    const endpoint = (process.env.NODE_ENV !== "production") ? "http://tabletop-apps.herokuapp.com" : 'http://localhost:8000';
     const socket = socketIOClient(endpoint);
     socket.emit('join', gameId);
     this.socket = socket

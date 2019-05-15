@@ -1,6 +1,8 @@
 import React from 'react';
 import BoardSquare from './board_square';
 import Item from './item';
+import 'whatwg-fetch';
+import socketIOClient from 'socket.io-client';
 
 class Grid extends React.Component {
 
@@ -11,6 +13,14 @@ class Grid extends React.Component {
 
     componentDidMount() {
         this.props.fetchImageInstancesByGameId(this.props.match.params.gameId)
+        const endpoint = 'http://localhost:8000';
+        const socket = socketIOClient(endpoint);
+        const { gameId } = this.props;
+        socket.emit('join', gameId);
+        this.socket = socket
+        socket.on("image-instance", imageInstance => {
+            this.props.receiveImageInstance(imageInstance)
+        })
     }
 
     componentDidUpdate(prevProps) {

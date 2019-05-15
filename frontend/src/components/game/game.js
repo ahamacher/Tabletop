@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import socketIOClient from 'socket.io-client';
 import GameCanvas from '../canvas/game_canvas';
+import ItemsIndexContainer from '../items_menu/items_index_container';
 import MessagesPage from '../messages/messages_page';
 
 class Game extends Component {
@@ -51,6 +52,7 @@ class Game extends Component {
       <div>
         <h1>LOGGED INTO GAME: {this.props.gameId}</h1>
         <GameCanvas />
+        <ItemsIndexContainer />
         <MessagesPage gameId={this.props.gameId}/>
       </div>
     )

@@ -23,7 +23,7 @@ class Grid extends React.Component {
     }
 
     moveItem(id, pos) {
-        const { pieces } = this.state;
+        const { pieces } = this.props;
         const piece = pieces[id];
         piece.positionX = pos[0];
         piece.positionY = pos[1];
@@ -50,7 +50,7 @@ class Grid extends React.Component {
     }
 
     getPiece(pos) {
-        const { pieces }  = this.state;
+        const { pieces }  = this.props;
         for (let p in pieces) {
             if (pieces[p].positionX === pos[0] && pieces[p].positionY === pos[1]) {
                 const piece = pieces[p];

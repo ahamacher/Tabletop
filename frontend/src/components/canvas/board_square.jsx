@@ -6,7 +6,8 @@ import { KNIGHT } from './items'
 const squareTarget = {
     drop(props, monitor) {
         const item = monitor.getItem();
-        props.moveItem(item.id, [props.x, props.y])
+        //if imageId is present then need to create a new image 
+        props.moveItem(item.id, item.imageId, [props.x, props.y])
     },
 }
 

@@ -394,3 +394,12 @@ code {
   color: red;
 }
 
+.items-div {
+  width: 100px;
+  height: 100%;
+}
+
+.game-view {
+  display: flex;
+}
+

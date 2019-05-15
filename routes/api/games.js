@@ -18,8 +18,6 @@ router.get('/',
 router.get('/:id', (req, res) => {
     console.log(req.params.id);
     Game.findById(req.params.id)
-        .populate("gameMaster")
-        .populate("users")
         .then(game => {
             return res.json(game);
         })

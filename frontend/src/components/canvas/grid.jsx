@@ -55,7 +55,7 @@ class Grid extends React.Component {
     renderPiece(pos) {
         const piece = this.getPiece(pos);
         if (piece) {
-            return <Item id={piece.id} />
+            return <Item id={piece.id} pieceImage={this.props.images[piece.image_id]}  />
         }
     }
 

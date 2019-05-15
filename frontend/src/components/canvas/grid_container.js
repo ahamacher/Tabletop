@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         game: state.entities.games[ownProps.match.params.gameId],
         pieces: state.entities.imageInstances,
-        gameId: ownProps.match.params.gameId
+        gameId: ownProps.match.params.gameId,
+        images: state.entities.images
     }
 }
 

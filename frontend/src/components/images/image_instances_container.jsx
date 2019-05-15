@@ -7,7 +7,6 @@ import socketIOClient from 'socket.io-client';
 
 // #TODO only grab imageInstances and images from this room
 const mapStateToProps = (state, ownProps) => {
-    debugger;
     return ({
         imageInstances: state.entities.imageInstances,
         images: state.entities.images

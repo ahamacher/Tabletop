@@ -508,3 +508,35 @@ code {
 .inputfile + label:hover {
     background-color: #FAA619;
 }
+
+
+/* IMAGE INDEX */
+
+.items-div {
+  background-color: #25252A;
+  width: 150px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.items-div h3 {
+  color: lightgray;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.items-index-item {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,.5);
+}

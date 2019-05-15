@@ -35,7 +35,7 @@ class Grid extends React.Component {
 
     moveItem(id, imageId, pos) {
         if (id) {
-            this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] }).then(()=>this.forceUpdate())
+            this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] })
         } else if (imageId) {
             this.props.createImageInstance(imageId, { positionX: pos[0], positionY: pos[1] })
         }

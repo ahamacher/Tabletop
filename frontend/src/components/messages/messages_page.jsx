@@ -57,6 +57,7 @@ class MessagesPage extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
         let messageParams = merge({}, this.state);
         this.props.createMessage(messageParams);
         this.setState({ 
@@ -64,6 +65,7 @@ class MessagesPage extends React.Component {
             positionX: "",
             positionY: ""
         })
+
     }
 
     render() {

@@ -32,7 +32,10 @@ app.use(bodyParser.json());
 const server = require("http").createServer(app);
 const io = require("socket.io").listen(server);
 
-server.listen(process.env.PORT || 8000);
+if (!process.env.PORT) {
+  server.listen(8000);
+}
+// server.listen(process.env.PORT || 8000);
 
 // const http = require('http').Server(app);
 // const io = require('socket.io')(http);

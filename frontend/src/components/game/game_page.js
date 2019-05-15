@@ -49,6 +49,7 @@ class GamePage extends Component {
       <div>
         <h1>LOGGED INTO THE GAME PAGE</h1>
         <GameCanvas />
+        <ItemsIndexContainer />
         <form>
           <input type="text" onChange={this.update('message')} value={this.state.message}/> 
           <button type="submit">submit</button>

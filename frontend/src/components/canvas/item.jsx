@@ -15,7 +15,7 @@ const collect = (connect, monitor) => {
   }
 }
 
-const Item = ({ connectDragSource, isDragging }) => {
+const Item = ({ pieceImageURL, connectDragSource, isDragging }) => {
   return connectDragSource (
     <div
       style={{
@@ -24,7 +24,7 @@ const Item = ({ connectDragSource, isDragging }) => {
         cursor: 'move',
       }}
     >
-      <span>♘</span>
+      {pieceImageURL !== undefined ? <img src={pieceImageURL} width="60" /> : null }
     </div>
   )
 }

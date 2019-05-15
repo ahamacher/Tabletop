@@ -17,6 +17,14 @@ const MessageSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    positionX: {
+        type: Number,
+        default: 0
+    },
+    positionY: {
+        type: Number,
+        default: 0
     }
 });
 

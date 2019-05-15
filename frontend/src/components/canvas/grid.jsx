@@ -1,28 +1,44 @@
 import React from 'react';
 import BoardSquare from './board_square';
 import Item from './item';
+import 'whatwg-fetch';
+import socketIOClient from 'socket.io-client';
 
 class Grid extends React.Component {
 
     constructor(props) {
         super(props);
-        // this.state = { pieces: { 0: { id: 0, x: 0, y: 0 }, 1: { id: 1, x: 0, y: 5 }, 2: { id: 2, x: 10, y: 12 } } };
-        this.state = this.props.pieces
         this.moveItem = this.moveItem.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchItems(this.props.match.params.gameId)
+        this.props.fetchImageInstancesByGameId(this.props.match.params.gameId)
+        const endpoint = 'http://localhost:8000';
+        const socket = socketIOClient(endpoint);
+        const { gameId } = this.props;
+        socket.emit('join', gameId);
+        this.socket = socket
+        socket.on("image-instance", imageInstance => {
+            this.props.receiveImageInstance(imageInstance)
+        })
     }
 
-    moveItem(id, pos) {
-        const pieces = this.props.pieces; 
-        const piece = pieces[id];
-        piece.position[0] = pos[0];
-        piece.position[1] = pos[1];
-        pieces[id] = piece;
-        this.setState({ pieces: pieces })
-        // call update method
+    componentDidUpdate(prevProps) {
+        if (prevProps.game === undefined || prevProps.game._id !== this.props.match.params.gameId) {
+            this.props.fetchImageInstancesByGameId(this.props.match.params.gameId);
+        }
+    }
+
+    componentWillUnmount() {
+        this.props.clearImageInstances();
+    }
+
+    moveItem(id, imageId, pos) {
+        if (id) {
+            this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] }).then(()=>this.forceUpdate())
+        } else if (imageId) {
+            this.props.createImageInstance(imageId, { positionX: pos[0], positionY: pos[1] })
+        }
     }
 
     renderSquare(pos) {
@@ -37,15 +53,17 @@ class Grid extends React.Component {
 
     renderPiece(pos) {
         const piece = this.getPiece(pos);
-        if (piece) {
-            return <Item id={piece.id} />
+        if (piece && this.props.images[piece.image_id]) {
+            if (this.props.images[piece.image_id].url !== undefined) {
+                return <Item id={piece.id} pieceImageURL={this.props.images[piece.image_id].url}  />
+            }
         }
     }
 
     getPiece(pos) {
-        const pieces = this.props.pieces;
+        const { pieces }  = this.props;
         for (let p in pieces) {
-            if (pieces[p].position[0] === pos[0] && pieces[p].position[1] === pos[1]) {
+            if (pieces[p].positionX === pos[0] && pieces[p].positionY === pos[1]) {
                 const piece = pieces[p];
                 piece.id = p;
                 return piece;

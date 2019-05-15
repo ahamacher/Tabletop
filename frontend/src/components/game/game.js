@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import socketIOClient from 'socket.io-client';
 import GameCanvas from '../canvas/game_canvas';
+import ItemsIndexContainer from '../items_menu/items_index_container';
 import MessagesPage from '../messages/messages_page';
+import GameModalContainer from '../game_modal/game_modal_container';
 
 class Game extends Component {
   constructor(props){
@@ -16,8 +18,10 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    const { fetchGameById } = this.props;
+    const { fetchGameById, fetchImages, fetchImageInstances } = this.props;
     const { gameId } = this.props
+    fetchImages();
+    fetchImageInstances();
     fetchGameById(gameId);
     const endpoint = 'http://localhost:8000';
     const socket = socketIOClient(endpoint);
@@ -48,9 +52,13 @@ class Game extends Component {
 
   render() {
     return(
-      <div>
+      <div className="game-div">
         <h1>LOGGED INTO GAME: {this.props.gameId}</h1>
-        <GameCanvas />
+        <GameModalContainer gameId={this.props.gameId}/>
+        <section className="game-view">
+          <GameCanvas />
+          <ItemsIndexContainer />
+        </section>
         <MessagesPage gameId={this.props.gameId}/>
       </div>
     )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom';
+import { login } from '../../actions/session_actions';
 
 class SignupForm extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class SignupForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
+    if (nextProps.signedIn === true) {
       //subject to change based on actual route
       this.props.history.push('/');
     }

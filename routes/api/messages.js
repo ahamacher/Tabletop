@@ -32,21 +32,27 @@ router.get("/:id", (req, res) => {
 // #TODO what's stopping someone from posting message to any other game?
 router.post("/game/:game_id",
     passport.authenticate("jwt", {session: false}),
-
+    
     // #TODO we need a middleware here to authenticate that user belongs to game
     (req, res) => {
         const { errors, isValid } = validateMessageInput(req.body);
+
 
         if (!isValid) {
             return res.status(400).json(errors);
         }
 
-        const newMessage = new Message({
-            game: req.params.game_id,
-            user: req.user.id,
-            text: req.body.text
-        })
+        let messageParams = {};
+        messageParams.game = req.params.game_id;
+        messageParams.user = req.user.id;
+        messageParams.text = req.body.text;
+        if (!isNaN(req.body.positionX) && !isNaN(req.body.positionY)) {
+            messageParams.positionX = req.body.positionX,
+            messageParams.positionY = req.body.positionY
+        }
 
+        const newMessage = new Message(messageParams)
+        
         newMessage.save().then(message => {
             req.app.io.in(req.params.game_id).emit('new-message', message);
             return res.json(message)});

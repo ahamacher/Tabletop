@@ -56,19 +56,20 @@ class Images extends React.Component {
 
 
         return(
-            <div>
+            <div className="game-modal-">
 
             
-                <form onSubmit={this.handleSubmit} encType="multipart/form-data">
-                    Select image to upload:
-                    <input type="file" onChange={this.handleImageFile} />
-                    <input type="submit" value="Upload Image" name="submit" />
+                <form onSubmit={this.handleSubmit} encType="multipart/form-data" className="upload-form">
+                    <div className="uplaod-head">Select image to upload:</div>
+                    <input type="file" onChange={this.handleImageFile} id="file" className="inputfile"/>
+                    <label for="file" className="modal-button">Choose a file</label>
+                    <input type="submit" value="Upload Image" name="submit" className="modal-button"/>
                 </form>
 
-               <ul>
+               {/* <ul>
                    { images }
                </ul>
-               <button onClick={this.fetchImages}>See All Images</button>
+               <button onClick={this.fetchImages}>See All Images</button> */}
             </div>
         )
     }

@@ -1,17 +1,24 @@
 import { connect } from 'react-redux'
-import { fetchItems } from  '../../actions/item_actions';
+import { fetchImageInstancesByGameId, updateImageInstance, clearImageInstances, receiveImageInstance, createImageInstance } from  '../../actions/image_instance_actions';
 import Grid from './grid';
 import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        pieces: state.entities.items
+        game: state.entities.games[ownProps.match.params.gameId],
+        pieces: state.entities.imageInstances,
+        gameId: ownProps.match.params.gameId,
+        images: state.entities.images
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchItems: (gameId) => dispatch(fetchItems(gameId)),
+        fetchImageInstancesByGameId: (gameId) => dispatch(fetchImageInstancesByGameId(gameId)),
+        updateImageInstance: (imageInstanceId, updateParams) => dispatch(updateImageInstance(imageInstanceId, updateParams)),
+        clearImageInstances: () => dispatch(clearImageInstances()),
+        receiveImageInstance: imageInstance => dispatch(receiveImageInstance(imageInstance)),
+        createImageInstance: (imageId, imageInstanceParams) => dispatch(createImageInstance(imageId, imageInstanceParams))
     }
 }
 

@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 router.put('/:id', 
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        Game.findById(req.params.id, (err, game) => {
+        Game.findOne({ _id: req.params.id}, (err, game) => {
             game.users = game.users.concat([req.user.id]);
             User.findById(req.user._id, (err, user) => {
                 user.games = user.games.concat([game._id])

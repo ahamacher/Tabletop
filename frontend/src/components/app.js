@@ -19,6 +19,7 @@ import ImagesContainer from './images/images_container';
 import GameContainer from './game/game_container';
 import GameFormContainer from './game_form/game_form_container'
 import ImageInstancesContainer from "./images/image_instances_container"
+import JoinGameContainer from "./game/join_game_container"
 
 
 const App = () => (
@@ -30,6 +31,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <ProtectedRoute path="/messages/:groupId" component={MessagesPage} />
       <ProtectedRoute exact path="/games/new" component={GameFormContainer} />
+      <ProtectedRoute exact path="/games/join" component={JoinGameContainer} />
       <ProtectedRoute exact path="/games/:gameId" component={GameContainer} />
       <ProtectedRoute exact path="/messages" component={MessagesPage} />
       <ProtectedRoute path="/images/:gameId" component={ImagesContainer} />

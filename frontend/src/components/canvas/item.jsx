@@ -4,6 +4,7 @@ import { KNIGHT } from './items'
 
 const itemSource = {
     beginDrag(props) {
+      debugger
       return { id: props.id }
     }
 }

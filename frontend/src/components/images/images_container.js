@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Images from './images';
 import {fetchImages, createImage } from '../../actions/image_actions';
 
@@ -15,4 +16,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     })
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Images);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Images));

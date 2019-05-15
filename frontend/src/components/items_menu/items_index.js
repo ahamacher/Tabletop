@@ -11,6 +11,7 @@ class ItemsIndex extends React.Component {
         const items = this.props.images.map((item) => <ItemsIndexItem key={item._id} item={item} />)
         return (
             <div className="items-div">
+                <h3>Available Images</h3>
                 <ul className="items-list">
                     { items }
                 </ul>

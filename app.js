@@ -29,8 +29,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Socket.io
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const server = require("http").createServer(app);
+const io = require("socket.io").listen(server);
+
+server.listen(process.env.PORT || 8000);
+
+// const http = require('http').Server(app);
+// const io = require('socket.io')(http);
 app.io = io;
 
 io.on('connection', function(socket) {
@@ -47,7 +52,7 @@ io.on('connection', function(socket) {
     io.in(data.room).emit('new-message', data.message);
   })
 })
-io.listen(8000);
+// io.listen(8000);
 // end socket 
 
 

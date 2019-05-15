@@ -7,7 +7,6 @@ import socketIOClient from 'socket.io-client';
 
 // #TODO only grab imageInstances and images from this room
 const mapStateToProps = (state, ownProps) => {
-    debugger;
     return ({
         imageInstances: state.entities.imageInstances,
         images: state.entities.images
@@ -39,7 +38,7 @@ class ImageInstances extends React.Component {
     }
 
     componentDidMount(){
-        const endpoint = 'http://localhost:8000';
+        const endpoint = process.env.PORT || 'http://localhost:8000';
         const socket = socketIOClient(endpoint);
         const { gameId } = this.props;
         socket.emit('join', gameId);

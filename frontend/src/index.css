@@ -474,6 +474,7 @@ code {
 .game-modal-container .modal-button:hover {
   background-color: #FAA619;
   cursor: pointer;
+  opacity: .9;
 }
 
 .game-modal-container .inputfile {

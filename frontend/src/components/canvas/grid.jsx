@@ -33,8 +33,12 @@ class Grid extends React.Component {
         this.props.clearImageInstances();
     }
 
-    moveItem(id, pos) {
-        this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] });
+    moveItem(id, imageId, pos) {
+        if (id) {
+            this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] }).then(()=>this.forceUpdate())
+        } else if (imageId) {
+            this.props.createImageInstance(imageId, { positionX: pos[0], positionY: pos[1] })
+        }
     }
 
     renderSquare(pos) {
@@ -49,8 +53,10 @@ class Grid extends React.Component {
 
     renderPiece(pos) {
         const piece = this.getPiece(pos);
-        if (piece) {
-            return <Item id={piece.id} />
+        if (piece && this.props.images[piece.image_id]) {
+            if (this.props.images[piece.image_id].url !== undefined) {
+                return <Item id={piece.id} pieceImageURL={this.props.images[piece.image_id].url}  />
+            }
         }
     }
 

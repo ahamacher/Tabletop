@@ -401,6 +401,15 @@ code {
   color: #d3d3d3;
 }
 
+.items-div {
+  width: 100px;
+  height: 100%;
+}
+
+.game-view {
+  display: flex;
+}
+
 /* Game Modal */
 
 .modal-button-container {

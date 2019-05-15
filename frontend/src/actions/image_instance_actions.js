@@ -23,12 +23,12 @@ export const fetchImageInstancesByGameId = (gameId) => dispatch => (
         .then((res) => dispatch(receiveImageInstances(res.data)))
 );
 
-export const createImageInstance = (imageId) => dispatch => (
-    imageInstanceApiUtil.createImageInstance(imageId)
+export const createImageInstance = (imageId, imageInstanceParams) => dispatch => (
+    imageInstanceApiUtil.createImageInstance(imageId, imageInstanceParams)
         .then((res) => dispatch(receiveImageInstance(res.data)))
 );
 
-export const updateImageInstance = (imageInstanceId, updateParams) => dispatch => {
+export const updateImageInstance = (imageInstanceId, updateParams) => dispatch => (
     imageInstanceApiUtil.updateImageInstance(imageInstanceId, updateParams)
         .then(res => dispatch(receiveImageInstance(res.data)))
-};
+);

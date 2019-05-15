@@ -1,4 +1,5 @@
 import React from "react";
+import { merge } from "lodash";
 import 'whatwg-fetch';
 import socketIOClient from 'socket.io-client';
 import io from 'socket.io-client'
@@ -16,7 +17,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
     receiveMessage: message => dispatch(receiveMessage(message)),
     fetchMessages: () => dispatch(fetchMessagesByGameId(ownProps.gameId)),
-    createMessage: (text) => dispatch(createMessage(ownProps.gameId, text))
+    createMessage: (messageParams) => dispatch(createMessage(ownProps.gameId, messageParams))
 }}
 
 class MessagesPage extends React.Component {
@@ -24,7 +25,9 @@ class MessagesPage extends React.Component {
         super(props)
 
         this.state = {
-            text:""
+            text:"",
+            positionX:"",
+            positionY:""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,16 +46,24 @@ class MessagesPage extends React.Component {
         
     }
 
-    handleChange(e) {
-        this.setState({
-            text: e.currentTarget.value
+    handleChange(field) {
+        return (
+         (e) => {
+            this.setState({
+                [field]: e.currentTarget.value
+            })
         })
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createMessage(this.state.text);
-        this.setState({ text: ""})
+        let messageParams = merge({}, this.state);
+        this.props.createMessage(messageParams);
+        this.setState({ 
+            text: "",
+            positionX: "",
+            positionY: ""
+        })
     }
 
     render() {
@@ -69,9 +80,22 @@ class MessagesPage extends React.Component {
                     <input
                         type="text"
                         value={this.state.text}
-                        onChange={this.handleChange}
+                        onChange={this.handleChange("text")}
                         placeholder="enter new message"/>
-                    <input type="submit" value="Create message"/>
+
+                    <input
+                        type="text"
+                        value={this.state.positionX}
+                        onChange={this.handleChange("positionX")}
+                        placeholder="positionX" />
+
+                    <input
+                        type="text"
+                        value={this.state.positionY}
+                        onChange={this.handleChange("positionY")}
+                        placeholder="positionY" />
+
+                    <input type="submit" value="Create message" />
                 </form>
             </div>
         )

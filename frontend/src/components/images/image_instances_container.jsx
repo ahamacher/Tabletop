@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchImageInstances: () => dispatch(fetchImageInstancesByGameId(ownProps.match.params.gameId)),
-    createImageInstance: (imageId) => dispatch(createImageInstance(imageId)),
+    createImageInstance: (imageId, imageInstanceParams) => dispatch(createImageInstance(imageId, imageInstanceParams)),
     updateImageInstance: (imageInstanceId, updateParams) => dispatch(updateImageInstance(imageInstanceId, updateParams)),
     fetchImages: () => dispatch(fetchImages(ownProps.match.params.gameId)),
     receiveImageInstance: imageInstance => dispatch(receiveImageInstance(imageInstance))
@@ -61,7 +61,10 @@ class ImageInstances extends React.Component {
 
     handleCreate(e) {
         e.preventDefault();
-        this.props.createImageInstance(this.state.imageId)
+        this.props.createImageInstance(this.state.imageId, {
+            positionX: this.state.positionX,
+            positionY: this.state.positionY
+        })
     }
 
     handleUpdate(e) {
@@ -112,6 +115,19 @@ class ImageInstances extends React.Component {
                         value={this.state.imageId}
                         onChange={this.handleChange("imageId")}
                         placeholder="image ID"/>
+
+                    <input
+                        type="text"
+                        value={this.state.positionX}
+                        onChange={this.handleChange("positionX")}
+                        placeholder="positionX" />
+
+                    <input
+                        type="text"
+                        value={this.state.positionY}
+                        onChange={this.handleChange("positionY")}
+                        placeholder="positionY" />
+                        
                     <input type="submit" value="create image instance from image"/>
                 </form>
 

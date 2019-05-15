@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import socketIOClient from 'socket.io-client';
 import GameCanvas from '../canvas/game_canvas';
+import ItemsIndexContainer from '../items_menu/items_index_container';
 import MessagesPage from '../messages/messages_page';
 import GameModalContainer from '../game_modal/game_modal_container';
 
@@ -51,10 +52,13 @@ class Game extends Component {
 
   render() {
     return(
-      <div className="game-wrapper">
+      <div className="game-div">
         <h1>LOGGED INTO GAME: {this.props.gameId}</h1>
         <GameModalContainer gameId={this.props.gameId}/>
-        <GameCanvas />
+        <section className="game-view">
+          <GameCanvas />
+          <ItemsIndexContainer />
+        </section>
         <MessagesPage gameId={this.props.gameId}/>
       </div>
     )

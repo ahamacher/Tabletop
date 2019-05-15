@@ -41,11 +41,16 @@ router.post("/game/:game_id",
             return res.status(400).json(errors);
         }
 
-        const newMessage = new Message({
-            game: req.params.game_id,
-            user: req.user.id,
-            text: req.body.text
-        })
+        let messageParams = {};
+        messageParams.game = req.params.gem_id;
+        messageParams.user = req.user.id;
+        messageParams.text = req.body.text;
+        if (!isNaN(req.body.positionX) && !isNaN(req.body.positionY)) {
+            messageParams.positionX = req.body.positionX,
+            messageParams.positionY = req.body.positionY
+        }
+
+        const newMessage = new Message(messageParams)
 
         newMessage.save().then(message => {
             req.app.io.in(req.params.game_id).emit('new-message', message);

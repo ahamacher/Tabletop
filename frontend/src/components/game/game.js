@@ -16,8 +16,10 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    const { fetchGameById } = this.props;
+    const { fetchGameById, fetchImages, fetchImageInstances } = this.props;
     const { gameId } = this.props
+    fetchImages();
+    fetchImageInstances();
     fetchGameById(gameId);
     const endpoint = 'http://localhost:8000';
     const socket = socketIOClient(endpoint);

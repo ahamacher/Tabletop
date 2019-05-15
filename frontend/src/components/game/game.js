@@ -3,6 +3,7 @@ import 'whatwg-fetch';
 import socketIOClient from 'socket.io-client';
 import GameCanvas from '../canvas/game_canvas';
 import MessagesPage from '../messages/messages_page';
+import GameModalContainer from '../game_modal/game_modal_container';
 
 class Game extends Component {
   constructor(props){
@@ -50,8 +51,9 @@ class Game extends Component {
 
   render() {
     return(
-      <div>
+      <div className="game-wrapper">
         <h1>LOGGED INTO GAME: {this.props.gameId}</h1>
+        <GameModalContainer gameId={this.props.gameId}/>
         <GameCanvas />
         <MessagesPage gameId={this.props.gameId}/>
       </div>

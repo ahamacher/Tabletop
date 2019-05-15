@@ -394,3 +394,93 @@ code {
   color: red;
 }
 
+/* Game */
+
+.game-wrapper {
+  background-color: #25252A;
+  color: #d3d3d3;
+}
+
+/* Game Modal */
+
+.modal-button-container {
+  position: absolute;
+  right: 40px;
+  top: 95px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.modal-button-ham .fas {
+  font-size: 26px;
+}
+
+.modal-button-ham:hover .fas {
+  color: white;
+}
+
+.hidden {
+  display: none;
+  position: absolute;
+}
+
+.game-modal-container {
+  position: absolute;
+  background-color: #1E1E1E;
+  top: 35px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 5px;
+  padding: 20px;
+  width: 200px;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.modal-button {
+  background-color: #FAA619;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 3px;
+  margin-top: 20px;
+  padding: 1px 7px 2px;
+  height: 40px;
+}
+
+.modal-button:hover {
+  background-color: #FAA619;
+}
+
+.inputfile {
+  width: .1px;
+  height: .1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+    color: white;
+    background-color: #FAA619;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: #FAA619;
+}

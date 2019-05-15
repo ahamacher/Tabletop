@@ -63,6 +63,7 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+  console.log("we were able to hit login route")
   const email = req.body.email;
   const password = req.body.password;
   const { errors, isValid } = validateLoginInput(req.body);

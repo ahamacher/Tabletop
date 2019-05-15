@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import Images from './images';
 import {fetchImages, createImage } from '../../actions/image_actions';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
+    gameId: ownProps.gameId,
     images: state.entities.images 
 });
 

@@ -7,7 +7,7 @@ class Grid extends React.Component {
     constructor(props) {
         super(props);
         // this.state = { pieces: { 0: { id: 0, x: 0, y: 0 }, 1: { id: 1, x: 0, y: 5 }, 2: { id: 2, x: 10, y: 12 } } };
-        this.state = { pieces: {} };
+        // this.state = { pieces: {} };
         this.moveItem = this.moveItem.bind(this);
     }
 
@@ -17,7 +17,7 @@ class Grid extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.game === undefined || prevProps.game._id !== this.props.match.params.gameId) {
-            this.props.fetchImageInstancesByGameId(this.props.match.params.gameId).then((res) => this.setState({pieces: this.props.pieces }));
+            this.props.fetchImageInstancesByGameId(this.props.match.params.gameId);
         }
     }
 
@@ -27,8 +27,9 @@ class Grid extends React.Component {
         piece.positionX = pos[0];
         piece.positionY = pos[1];
         pieces[id] = piece;
-        this.setState({ pieces: pieces }, 
-        () => this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] }))
+        this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] });
+        // this.setState({ pieces: pieces }, 
+        // () => this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] }))
     }
 
     renderSquare(pos) {

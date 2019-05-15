@@ -404,6 +404,7 @@ code {
 .items-div {
   width: 100px;
   height: 100%;
+  margin-top: 40px;
 }
 
 .game-view {

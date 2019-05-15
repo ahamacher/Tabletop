@@ -53,7 +53,7 @@ class Game extends Component {
   render() {
     return(
       <div className="game-div">
-        <h1>LOGGED INTO GAME: {this.props.gameId}</h1>
+        {/* <h1>LOGGED INTO GAME: {this.props.gameId}</h1> */}
         <GameModalContainer gameId={this.props.gameId}/>
         <section className="game-view">
           <GameCanvas />

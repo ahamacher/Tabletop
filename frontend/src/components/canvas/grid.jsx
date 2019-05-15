@@ -62,7 +62,7 @@ class Grid extends React.Component {
     }
 
     getPiece(pos) {
-        const { pieces }  = this.props;
+       const { pieces }  = this.props;
         for (let p in pieces) {
             if (pieces[p].positionX === pos[0] && pieces[p].positionY === pos[1]) {
                 const piece = pieces[p];

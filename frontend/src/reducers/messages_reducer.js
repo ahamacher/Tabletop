@@ -19,6 +19,16 @@ const messagesReducer = (state = {}, action) => {
 
         case RECEIVE_MESSAGE:
             
+            let newerMessages;
+            
+            if (Object.values(state).length > 5) {
+                
+                newerMessages = Object.values(state).slice(-5)
+                state = keyBy(newerMessages, "_id")
+                
+            }
+            
+
             newState = merge({}, state, {[action.message._id]: action.message} )
             return newState;
         default:

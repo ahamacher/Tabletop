@@ -53,6 +53,7 @@ class MessagesPage extends React.Component {
         e.preventDefault();
         this.props.createMessage(this.state.text);
         this.setState({ text: ""})
+    
     }
 
     render() {

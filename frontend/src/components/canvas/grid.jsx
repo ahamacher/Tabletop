@@ -13,7 +13,6 @@ class Grid extends React.Component {
 
     componentDidMount() {
         this.props.fetchImageInstancesByGameId(this.props.match.params.gameId)
-
     }
 
     componentDidUpdate(prevProps) {

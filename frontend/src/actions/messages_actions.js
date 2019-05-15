@@ -15,10 +15,12 @@ export const receiveMessage = (message) => ({
 
 export const fetchMessagesByGameId = (gameId) => (dispatch) => (
     messagesApiUtil.fetchMessagesByGameId(gameId)
-        .then((res) => dispatch(receiveMessages(res.data)))
+        .then((res) => 
+            dispatch(receiveMessages(res.data)
+        ))
 );
 
-export const createMessage = (gameId, text) => (dispatch) => (
-    messagesApiUtil.createMessage(gameId, text)
+export const createMessage = (gameId, messageParams) => (dispatch) => (
+    messagesApiUtil.createMessage(gameId, messageParams)
         .then((res) => dispatch(receiveMessage(res.data)))
 );

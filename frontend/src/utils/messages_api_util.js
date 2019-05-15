@@ -5,7 +5,5 @@ export const fetchMessagesByGameId = (gameId) => {
 }
 
 export const createMessage = (gameId, messageParams) => {
-    return axios.post(`/api/messages/game/${gameId}`, {
-        messageParams
-    })
+    return axios.post(`/api/messages/game/${gameId}`, messageParams)
 }

@@ -49,10 +49,12 @@ class Game extends Component {
 
   render() {
     return(
-      <div>
+      <div className="game-div">
         <h1>LOGGED INTO GAME: {this.props.gameId}</h1>
-        <GameCanvas />
-        <ItemsIndexContainer />
+        <section className="game-view">
+          <GameCanvas />
+          <ItemsIndexContainer />
+        </section>
         <MessagesPage gameId={this.props.gameId}/>
       </div>
     )

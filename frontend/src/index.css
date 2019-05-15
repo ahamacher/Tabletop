@@ -400,3 +400,7 @@ code {
   height: 100%;
 }
 
+.game-view {
+  display: flex;
+}
+

@@ -23,8 +23,12 @@ class Grid extends React.Component {
         this.props.clearImageInstances();
     }
 
-    moveItem(id, pos) {
-        this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] });
+    moveItem(id, imageId, pos) {
+        if (id) {
+            this.props.updateImageInstance(id, null, { positionX: pos[0], positionY: pos[1] });
+        } else if (imageId) {
+            //create new image instance
+        }
     }
 
     renderSquare(pos) {

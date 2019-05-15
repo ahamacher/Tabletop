@@ -35,10 +35,8 @@ class Grid extends React.Component {
 
     moveItem(id, imageId, pos) {
         if (id) {
-            debugger
-            this.props.updateImageInstance(id, null, { positionX: pos[0], positionY: pos[1] });
+            this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] })
         } else if (imageId) {
-            //create new image instance
             this.props.createImageInstance(imageId, { positionX: pos[0], positionY: pos[1] })
         }
     }
@@ -56,7 +54,7 @@ class Grid extends React.Component {
     renderPiece(pos) {
         const piece = this.getPiece(pos);
         if (piece) {
-            return <Item id={piece.id} pieceImage={this.props.images[piece.image_id]}  />
+            return <Item id={piece.id} piece={piece} pieceImage={this.props.images[piece.image_id]}  />
         }
     }
 

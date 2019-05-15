@@ -16,7 +16,6 @@ class GameForm extends React.Component {
         e.preventDefault();
         const gameForm = { ...this.state }
         this.props.createGame(gameForm).then((res) => {
-            debugger
             this.props.history.push(`/games/${res.game._id}`)
         })
     }

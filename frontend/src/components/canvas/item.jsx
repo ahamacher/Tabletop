@@ -24,7 +24,7 @@ const Item = ({ pieceImage, connectDragSource, isDragging }) => {
         cursor: 'move',
       }}
     >
-      {pieceImage && pieceImage.url ? <img src={pieceImage.url} width="60" /> : <span>♘</span> }
+      { pieceImage !== undefined ? <img src={pieceImage.url} width="60" /> : null }
     </div>
   )
 }

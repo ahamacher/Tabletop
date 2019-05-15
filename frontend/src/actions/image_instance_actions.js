@@ -2,6 +2,11 @@ import * as imageInstanceApiUtil from "../utils/image_instances_api_util";
 
 export const RECEIVE_IMAGE_INSTANCES = "RECEIVE_IMAGE_INSTANCES";
 export const RECEIVE_IMAGE_INSTANCE = "RECEIVE_IMAGE_INSTANCE";
+export const CLEAR_IMAGE_INSTANCES = "CLEAR_IMAGE_INSTANCES";
+
+export const clearImageInstances = () => ({
+    type: CLEAR_IMAGE_INSTANCES
+});
 
 const receiveImageInstances = (imageInstances) => ({
     type: RECEIVE_IMAGE_INSTANCES,

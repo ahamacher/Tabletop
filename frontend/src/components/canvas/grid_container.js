@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { fetchImageInstancesByGameId, updateImageInstance, clearImageInstances, receiveImageInstance } from  '../../actions/image_instance_actions';
+import { fetchImageInstancesByGameId, updateImageInstance, clearImageInstances, receiveImageInstance, createImageInstance } from  '../../actions/image_instance_actions';
 import Grid from './grid';
 import { withRouter } from 'react-router-dom'
 
@@ -16,7 +16,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchImageInstancesByGameId: (gameId) => dispatch(fetchImageInstancesByGameId(gameId)),
         updateImageInstance: (imageInstanceId, updateParams) => dispatch(updateImageInstance(imageInstanceId, updateParams)),
         clearImageInstances: () => dispatch(clearImageInstances()),
-        receiveImageInstance: imageInstance => dispatch(receiveImageInstance(imageInstance))
+        receiveImageInstance: imageInstance => dispatch(receiveImageInstance(imageInstance)),
+        createImageInstance: (imageId, imageInstanceParams) => dispatch(createImageInstance(imageId, imageInstanceParams))
     }
 }
 

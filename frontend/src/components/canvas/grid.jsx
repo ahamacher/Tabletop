@@ -24,11 +24,6 @@ class Grid extends React.Component {
     }
 
     moveItem(id, pos) {
-        const { pieces } = this.props;
-        const piece = pieces[id];
-        piece.positionX = pos[0];
-        piece.positionY = pos[1];
-        pieces[id] = piece;
         this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] });
     }
 

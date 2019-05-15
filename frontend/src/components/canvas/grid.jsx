@@ -53,14 +53,17 @@ class Grid extends React.Component {
 
     renderPiece(pos) {
         const piece = this.getPiece(pos);
-        if (piece && this.props.images[piece.image_id]) {
-            if (this.props.images[piece.image_id].url !== undefined) {
-                return <Item id={piece.id} piece={piece} pieceImageURL={this.props.images[piece.image_id].url}  />
+        const image = piece && (this.props.images[piece.image_id] || this.props.images[piece.image_id._id]);
+        if (piece && image) {
+            if (image.url !== undefined) {
+                debugger;
+                return <Item id={piece.id} piece={piece} pieceImageURL={image.url}  />
             }
         }
     }
 
     getPiece(pos) {
+        debugger
         const { pieces }  = this.props;
         for (let p in pieces) {
             if (pieces[p].positionX === pos[0] && pieces[p].positionY === pos[1]) {

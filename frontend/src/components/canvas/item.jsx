@@ -16,16 +16,18 @@ const collect = (connect, monitor) => {
   }
 }
 
-const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging }) => {
+const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging, piece, openItemModal }) => {
+  const scaledPercentage = parseFloat(piece.scalefactor.$numberDecimal)*100;
   return (
     <>
         {/* <DragPreviewImage id='drag-preview' connect={connectDragPreview} src={pieceImageURL}/> */}
         <div
           ref={connectDragSource}
+          onClick={openItemModal}
           style={{
             cursor: 'move',
           }}>
-          {pieceImageURL !== undefined ? <img src={pieceImageURL} width="60"/> : null}
+          {pieceImageURL !== undefined ? <img src={pieceImageURL} width={`${scaledPercentage}` + "%"} /> : null}
         </div>
       </>
   )

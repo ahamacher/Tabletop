@@ -13,7 +13,7 @@ class Grid extends React.Component {
 
     componentDidMount() {
         this.props.fetchImageInstancesByGameId(this.props.match.params.gameId)
-        const endpoint = (process.env.NODE_ENV === "production") ? "http://tabletop-apps.herokuapp.com" : 'http://localhost:8000';
+        const endpoint = (process.env.NODE_ENV === "production") ? "https://tabletop-apps.herokuapp.com" : 'http://localhost:8000';
         const socket = socketIOClient(endpoint);
         const { gameId } = this.props;
         socket.emit('join', gameId);

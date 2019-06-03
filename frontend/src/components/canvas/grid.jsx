@@ -56,7 +56,7 @@ class Grid extends React.Component {
         const image = piece && (this.props.images[piece.image_id] || this.props.images[piece.image_id._id]);
         if (piece && image) {
             if (image.url !== undefined) {
-                return <Item id={piece.id} piece={piece} pieceImageURL={image.url}  />
+                return <Item id={piece.id} piece={piece} pieceImageURL={image.url} openItemModal={() => this.props.openItemModal(piece.id)}/>
             }
         }
     }

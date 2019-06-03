@@ -17,7 +17,7 @@ router.get('/game/:game_id', (req, res) => {
     ImageInstance.find({ image_id: { $in: image_ids } })
         .then(imageInstances => res.json(imageInstances))
         .catch(err => res.status(404).json({ noimageinstancesfound: 'No image instances available in that game.' }));
-        })
+        });
 });
 
 router.post("/image/:image_id", (req, res) => {
@@ -38,7 +38,7 @@ router.post("/image/:image_id", (req, res) => {
             newImageInstance.save().then((imageInstance) => {
                 req.app.io.in(image.game_id).emit("image-instance", imageInstance);
                 return res.json(imageInstance)
-            })
+            });
         })
         .catch(err => res.status(404).json({ noimagesfound: "No image found"}))
 })

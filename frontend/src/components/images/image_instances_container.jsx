@@ -42,7 +42,7 @@ class ImageInstances extends React.Component {
         const socket = socketIOClient(endpoint);
         const { gameId } = this.props;
         socket.emit('join', gameId);
-        this.socket = socket
+        this.socket = socket;
         socket.on("image-instance", imageInstance => {
             this.props.receiveImageInstance(imageInstance)
         })

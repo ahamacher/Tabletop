@@ -17,13 +17,15 @@ import NavBarContainer from './nav/navbar_container';
 import MessagesPage from "./messages/messages_page";
 import ImagesContainer from './images/images_container';
 import GameContainer from './game/game_container';
-import GameFormContainer from './game_form/game_form_container'
-import ImageInstancesContainer from "./images/image_instances_container"
-import JoinGameContainer from "./game/join_game_container"
+import GameFormContainer from './game_form/game_form_container';
+import ImageInstancesContainer from "./images/image_instances_container";
+import JoinGameContainer from "./game/join_game_container";
+import ItemModal from "./canvas/item_modal";
 
 
 const App = () => (
   <div id="main">
+    <ItemModal />
     <NavBarContainer />
     <Switch>
       <Route exact path="/" component={MainPageContainer} />

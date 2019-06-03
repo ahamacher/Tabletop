@@ -32,14 +32,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Socket.io
-const server = require("http").createServer(app);
-const io = require("socket.io").listen(server);
+  const server = require('http').createServer(app);
+  const io = require('socket.io').listen(server);
+
+  server.listen(process.env.PORT || 8000);
+
+// const server = require("http").createServer(app);
+// const io = require("socket.io").listen(server);
 
 // const io = require("socket.io")(app);
-
-if (!process.env.PORT) {
-  io.listen(8000);
-}
 // server.listen(process.env.PORT || 8000);
 
 // const http = require('http').Server(app);
@@ -58,8 +59,8 @@ io.on('connection', function(socket) {
   socket.on('messages', data => {
     console.log(data);
     io.in(data.room).emit('new-message', data.message);
-  })
-})
+  });
+});
 // io.listen(8000);
 // end socket 
 

@@ -3,8 +3,8 @@ import { DragSource, DragPreviewImage } from 'react-dnd'
 import { KNIGHT } from './items'
 
 const itemSource = {
-    beginDrag(props) {
-      return { id: props.id }
+    beginDrag({id}, monitor, component) {
+      return { id, component }
     }
 }
 
@@ -19,13 +19,13 @@ const collect = (connect, monitor) => {
 const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging }) => {
   return (
     <>
-        <DragPreviewImage connect={connectDragPreview} src={pieceImageURL} width="60" />
+        {/* <DragPreviewImage id='drag-preview' connect={connectDragPreview} src={pieceImageURL}/> */}
         <div
           ref={connectDragSource}
           style={{
             cursor: 'move',
           }}>
-          {pieceImageURL !== undefined ? <img src={pieceImageURL} width="60" /> : null}
+          {pieceImageURL !== undefined ? <img src={pieceImageURL} width="60"/> : null}
         </div>
       </>
   )

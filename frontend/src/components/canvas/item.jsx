@@ -3,8 +3,8 @@ import { DragSource, DragPreviewImage } from 'react-dnd'
 import { KNIGHT } from './items'
 
 const itemSource = {
-    beginDrag(props) {
-      return { id: props.id }
+    beginDrag({id}, monitor, component) {
+      return { id, component }
     }
 }
 
@@ -20,7 +20,7 @@ const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging
   const scaledPercentage = parseFloat(piece.scalefactor.$numberDecimal)*100;
   return (
     <>
-        <DragPreviewImage connect={connectDragPreview} src={pieceImageURL} width="60" />
+        {/* <DragPreviewImage id='drag-preview' connect={connectDragPreview} src={pieceImageURL}/> */}
         <div
           ref={connectDragSource}
           onClick={openItemModal}

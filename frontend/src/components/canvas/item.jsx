@@ -1,12 +1,12 @@
 import React from 'react';
-import { DragSource, DragPreviewImage } from 'react-dnd'
-import { KNIGHT } from './items'
+import { DragSource, DragPreviewImage } from 'react-dnd';
+import { KNIGHT } from './items';
 
 const itemSource = {
     beginDrag({id}, monitor, component) {
-      return { id, component }
+      return { id, component };
     }
-}
+};
 
 const collect = (connect, monitor) => {
   return {
@@ -14,7 +14,7 @@ const collect = (connect, monitor) => {
     connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging(),
   }
-}
+};
 
 const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging, piece, openItemModal }) => {
   const scaledPercentage = parseFloat(piece.scalefactor.$numberDecimal)*100;
@@ -31,6 +31,6 @@ const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging
         </div>
       </>
   )
-}
+};
 
 export default DragSource(KNIGHT, itemSource, collect)(Item)

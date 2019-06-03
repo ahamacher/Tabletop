@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { fetchImageInstancesByGameId, updateImageInstance, clearImageInstances, receiveImageInstance, createImageInstance } from  '../../actions/image_instance_actions';
+import { fetchMessagesByGameId, createMessage, receiveMessage } from "../../actions/messages_actions";
 import { openItemModal } from "../../actions/item_modal_actions";
 import Grid from './grid';
 import { withRouter } from 'react-router-dom'
@@ -9,7 +10,8 @@ const mapStateToProps = (state, ownProps) => {
         game: state.entities.games[ownProps.match.params.gameId],
         pieces: state.entities.imageInstances,
         gameId: ownProps.match.params.gameId,
-        images: state.entities.images
+        images: state.entities.images,
+        messages: state.entities.messages
     }
 }
 
@@ -20,6 +22,7 @@ const mapDispatchToProps = (dispatch) => {
         clearImageInstances: () => dispatch(clearImageInstances()),
         receiveImageInstance: imageInstance => dispatch(receiveImageInstance(imageInstance)),
         createImageInstance: (imageId, imageInstanceParams) => dispatch(createImageInstance(imageId, imageInstanceParams)),
+        fetchMessages: (gameId) => dispatch(fetchMessagesByGameId(gameId)),
         openItemModal: (imageInstanceId) => dispatch(openItemModal(imageInstanceId))
     }
 }

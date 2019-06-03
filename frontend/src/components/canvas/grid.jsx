@@ -12,7 +12,8 @@ class Grid extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchImageInstancesByGameId(this.props.match.params.gameId)
+        this.props.fetchImageInstancesByGameId(this.props.match.params.gameId);
+        this.props.fetchMessages(this.props.match.params.gameId);
         const endpoint = (process.env.NODE_ENV === "production") ? "https://tabletop-apps.herokuapp.com" : 'http://localhost:8000';
         const socket = socketIOClient(endpoint);
         const { gameId } = this.props;
@@ -45,10 +46,36 @@ class Grid extends React.Component {
         return (
             <div key={pos} style={{ width: '10%', height: '10%' }}>
                 <BoardSquare x={pos[0]} y={pos[1]} moveItem={this.moveItem}>
-                    {this.renderPiece(pos)}
+                    <>
+                        {this.renderMessage(pos)}
+                        {this.renderPiece(pos)}
+                    </>
                 </BoardSquare>
             </div>
         )
+    }
+
+    renderMessage(pos){
+        const message = this.getMessage(pos);
+
+        if (message) {
+            return (
+                <div id={message.id}>
+                    {message.text}
+                </div>
+            );
+        }
+    }
+
+    getMessage(pos) {
+        const { messages } = this.props;
+        for (let m in messages) {
+            if (messages[m].positionX === pos[0] && messages[m].positionY === pos[1]) {
+                const message = messages[m];
+                message.id = m;
+                return message;
+            }
+        }
     }
 
     renderPiece(pos) {

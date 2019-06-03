@@ -2,7 +2,7 @@ import React from "react";
 import { merge } from "lodash";
 import 'whatwg-fetch';
 import socketIOClient from 'socket.io-client';
-import io from 'socket.io-client'
+import io from 'socket.io-client';
 import { connect } from "react-redux";
 import { 
     fetchMessagesByGameId, 
@@ -11,18 +11,18 @@ import {
 
 const mapStateToProps = (state) => ({
     messages: state.entities.messages
-})
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
     receiveMessage: message => dispatch(receiveMessage(message)),
     fetchMessages: () => dispatch(fetchMessagesByGameId(ownProps.gameId)),
     createMessage: (messageParams) => dispatch(createMessage(ownProps.gameId, messageParams))
-}}
+}};
 
 class MessagesPage extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             text:"",
@@ -35,14 +35,14 @@ class MessagesPage extends React.Component {
     }   
 
     componentDidMount(){
-        const endpoint = (process.env.NODE_ENV === "production") ? "http://tabletop-apps.herokuapp.com" : 'http://localhost:8000';
+        const endpoint = (process.env.NODE_ENV === "production") ? "https://tabletop-apps.herokuapp.com" : 'http://localhost:8000';
         const socket = socketIOClient(endpoint);
         const { gameId } = this.props;
         socket.emit('join', gameId);
-        this.socket = socket
+        this.socket = socket;
         socket.on("new-message", message => {
-            this.props.receiveMessage(message)
-        })
+            this.props.receiveMessage(message);
+        });
         
     }
 
@@ -51,8 +51,8 @@ class MessagesPage extends React.Component {
          (e) => {
             this.setState({
                 [field]: e.currentTarget.value
-            })
-        })
+            });
+        });
     }
 
     handleSubmit(e) {

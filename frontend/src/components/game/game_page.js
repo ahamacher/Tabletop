@@ -18,7 +18,7 @@ class GamePage extends Component {
   }
 
   componentDidMount() {
-    const endpoint = (process.env.NODE_ENV === "production") ? "http://tabletop-apps.herokuapp.com": 'http://localhost:8000';
+    const endpoint = (process.env.NODE_ENV === "production") ? "https://tabletop-apps.herokuapp.com": 'http://localhost:8000';
     const socket = socketIOClient(endpoint);
     socket.on("conversation", data => this.setState({ response: this.state.response.concat([data]) }))
     this.socket = socket

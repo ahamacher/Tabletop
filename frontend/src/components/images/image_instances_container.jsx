@@ -38,11 +38,11 @@ class ImageInstances extends React.Component {
     }
 
     componentDidMount(){
-        const endpoint = (process.env.NODE_ENV === "production") ? "http://tabletop-apps.herokuapp.com" : 'http://localhost:8000';
+        const endpoint = (process.env.NODE_ENV === "production") ? "https://tabletop-apps.herokuapp.com" : 'http://localhost:8000';
         const socket = socketIOClient(endpoint);
         const { gameId } = this.props;
         socket.emit('join', gameId);
-        this.socket = socket
+        this.socket = socket;
         socket.on("image-instance", imageInstance => {
             this.props.receiveImageInstance(imageInstance)
         })

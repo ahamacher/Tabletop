@@ -35,6 +35,7 @@ router.post("/game/:game_id",
     
     // #TODO we need a middleware here to authenticate that user belongs to game
     (req, res) => {
+        // console.log(req);
         const { errors, isValid } = validateMessageInput(req.body);
 
 

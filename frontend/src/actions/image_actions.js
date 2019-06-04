@@ -2,6 +2,7 @@ import * as ImageAPIutil from '../utils/images_api_util';
 
 export const RECEIVE_IMAGES = "RECEIVE_IMAGES";
 export const RECEIVE_IMAGE = "RECEIVE_IMAGE";
+export const CLEAR_IMAGES = "CLEAR_IMAGES";
 
 export const receiveImages = ( images ) => {
     return {
@@ -14,6 +15,12 @@ export const receiveImage = ( image ) => {
     return {
         type: RECEIVE_IMAGE,
         image
+    }
+}
+
+export const clearImages = () => {
+    return {
+        type: CLEAR_IMAGES
     }
 }
 

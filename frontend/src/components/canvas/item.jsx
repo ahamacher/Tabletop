@@ -21,11 +21,12 @@ const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging
   return (
     <>
         {/* <DragPreviewImage id='drag-preview' connect={connectDragPreview} src={pieceImageURL}/> */}
-        <div
+        <div className={`layer-${piece.layer_id}`}
           ref={connectDragSource}
           onClick={openItemModal}
           style={{
             cursor: 'move',
+            
           }}>
           {pieceImageURL !== undefined ? <img src={pieceImageURL} width={`${scaledPercentage}` + "%"} /> : null}
         </div>

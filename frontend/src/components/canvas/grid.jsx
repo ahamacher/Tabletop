@@ -43,12 +43,13 @@ class Grid extends React.Component {
     }
 
     renderSquare(pos) {
+        let zIndex = 0
         return (
             <div key={pos} style={{ width: '10%', height: '10%' }}>
                 <BoardSquare x={pos[0]} y={pos[1]} moveItem={this.moveItem}>
                     <>
                         {this.renderMessage(pos)}
-                        {this.renderPiece(pos)}
+                        {this.renderPieces(pos)}
                     </>
                 </BoardSquare>
             </div>
@@ -78,24 +79,49 @@ class Grid extends React.Component {
         }
     }
 
-    renderPiece(pos) {
-        const piece = this.getPiece(pos);
-        const image = piece && (this.props.images[piece.image_id] || this.props.images[piece.image_id._id]);
-        if (piece && image) {
-            if (image.url !== undefined) {
-                return <Item id={piece.id} piece={piece} pieceImageURL={image.url} openItemModal={() => this.props.openItemModal(piece.id)}/>
-            }
-        }
+
+    renderPieces(pos) {
+        
+        if ( this.getPieces(pos) !== null) {
+            
+            let matching = []
+            this.getPieces(pos).forEach(piece => {
+                let image = piece && (this.props.images[piece.image_id] || this.props.images[piece.image_id._id]);
+                if (piece && image) {
+                    if (image.url !== undefined) {
+                        matching.push(<Item id={piece.id} piece={piece} pieceImageURL={image.url} openItemModal={() => this.props.openItemModal(piece.id)} />)
+                    }
+                }
+            })
+            
+            return matching;
+        } 
+    
     }
 
-    getPiece(pos) {
+    // renderPiece(pos) {
+    //     const piece = this.getPiece(pos);
+    //     const image = piece && (this.props.images[piece.image_id] || this.props.images[piece.image_id._id]);
+    //     if (piece && image) {
+    //         if (image.url !== undefined) {
+    //             return <Item id={piece.id} piece={piece} pieceImageURL={image.url} openItemModal={() => this.props.openItemModal(piece.id)}/>
+    //         }
+    //     }
+    // }
+
+    getPieces(pos) {
        const { pieces }  = this.props;
+        let matching = []
         for (let p in pieces) {
+            
             if (pieces[p].positionX === pos[0] && pieces[p].positionY === pos[1]) {
-                const piece = pieces[p];
+                let piece = pieces[p];
                 piece.id = p;
-                return piece;
-            }
+                matching.push(piece)
+            } 
+        }
+        if (matching.length > 0) {
+            return matching;
         }
         return null;
     }

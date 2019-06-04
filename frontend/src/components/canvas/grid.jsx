@@ -137,7 +137,7 @@ class Grid extends React.Component {
     renderSquare(pos) {
         let zIndex = 0
         return (
-            <div key={pos} style={{ width: '10%', height: '10%' }}>
+            <div key={pos} style={{ width: '5%', height: '5%' }}>
                 <BoardSquare x={pos[0]} y={pos[1]} moveItem={this.moveItem} openMessageModal={() => this.props.openMessageModal({posX: pos[0], posY: pos[1]})}>
                     <>
                         {this.renderMessage(pos)}
@@ -259,8 +259,8 @@ class Grid extends React.Component {
 
     render() {
         const squares = [];
-        for (let col = 0; col < 10; col++) {
-            for (let row = 0; row < 10; row++ ) {
+        for (let col = 0; col < 20; col++) {
+            for (let row = 0; row < 20; row++ ) {
                 squares.push(this.renderSquare([row, col]))
             }
         }

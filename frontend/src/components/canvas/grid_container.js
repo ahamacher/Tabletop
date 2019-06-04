@@ -5,6 +5,7 @@ import { openMessageModal } from "../../actions/message_modal_actions";
 import { openItemModal } from "../../actions/item_modal_actions";
 import Grid from './grid';
 import { withRouter } from 'react-router-dom'
+import { clearImages } from '../../actions/image_actions';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -25,7 +26,11 @@ const mapDispatchToProps = (dispatch) => {
         createImageInstance: (imageId, imageInstanceParams) => dispatch(createImageInstance(imageId, imageInstanceParams)),
         fetchMessages: (gameId) => dispatch(fetchMessagesByGameId(gameId)),
         openItemModal: (imageInstanceId) => dispatch(openItemModal(imageInstanceId)),
+<<<<<<< HEAD
         openMessageModal: (position) => dispatch(openMessageModal(position))
+=======
+        clearImages: () => dispatch(clearImages())
+>>>>>>> 2ac74cd0b1f143070c622a3daa861315a0bf3581
     }
 }
 

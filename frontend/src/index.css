@@ -580,10 +580,38 @@ code {
 
 .layer-2{
   position: absolute;
-  z-index: 2000
+  z-index: 2000;
 }
 
 .layer-3{
   position: absolute;
-  z-index: 3000
+  z-index: 3000;
+}
+.layer-4{
+  position: absolute;
+  z-index: 4000;
+}
+.layer-5{
+  position: absolute;
+  z-index: 5000;
+}
+.layer-6{
+  position: absolute;
+  z-index: 6000;
+}
+.layer-7{
+  position: absolute;
+  z-index: 7000;
+}
+.layer-8{
+  position: absolute;
+  z-index: 8000;
+}
+.layer-9{
+  position: absolute;
+  z-index: 9000;
+}
+.layer-10{
+  position: absolute;
+  z-index: 10000;
 }

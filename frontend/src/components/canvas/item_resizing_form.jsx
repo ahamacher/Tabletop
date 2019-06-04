@@ -4,8 +4,8 @@ class ItemResizingForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            scalefactor: "",
-            layer_id: ""
+            layer_id: "",
+            scalefactor: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleNumberChange = this.handleNumberChange.bind(this);
@@ -19,7 +19,7 @@ class ItemResizingForm extends React.Component {
     }
 
     handleNumberChange(e) {
-        debugger
+        // debugger
         this.setState({
             layer_id: e.currentTarget.value
         })
@@ -46,7 +46,7 @@ class ItemResizingForm extends React.Component {
                     type="number"
                     onChange={this.handleNumberChange}
                     value={this.state.layer_id}
-                    placeholder={"Layer"} /> />
+                    placeholder={"Layer"} />
                 <br/>
                 <input type="submit" value="Change Image Attributes"/>
             </form>

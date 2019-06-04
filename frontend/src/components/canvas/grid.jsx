@@ -43,7 +43,7 @@ class Grid extends React.Component {
     }
 
     renderSquare(pos) {
-        let zIndex = 0
+       
         return (
             <div key={pos} style={{ width: '10%', height: '10%' }}>
                 <BoardSquare x={pos[0]} y={pos[1]} moveItem={this.moveItem}>

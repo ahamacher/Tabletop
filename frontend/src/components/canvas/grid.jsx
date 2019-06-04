@@ -135,7 +135,7 @@ class Grid extends React.Component {
     }
 
     renderSquare(pos) {
-        let zIndex = 0
+       
         return (
             <div key={pos} style={{ width: '5%', height: '5%' }}>
                 <BoardSquare x={pos[0]} y={pos[1]} moveItem={this.moveItem} openMessageModal={() => this.props.openMessageModal({posX: pos[0], posY: pos[1]})}>

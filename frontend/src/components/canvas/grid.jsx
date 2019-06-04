@@ -3,6 +3,7 @@ import BoardSquare from './board_square';
 import Item from './item';
 import 'whatwg-fetch';
 import socketIOClient from 'socket.io-client';
+import BoardSquareMenu from "../context_menu/board_square_menu";
 
 class Grid extends React.Component {
 
@@ -137,7 +138,7 @@ class Grid extends React.Component {
         let zIndex = 0
         return (
             <div key={pos} style={{ width: '10%', height: '10%' }}>
-                <BoardSquare x={pos[0]} y={pos[1]} moveItem={this.moveItem}>
+                <BoardSquare x={pos[0]} y={pos[1]} moveItem={this.moveItem} openMessageModal={() => this.props.openMessageModal({posX: pos[0], posY: pos[1]})}>
                     <>
                         {this.renderMessage(pos)}
                         {this.renderPieces(pos)}
@@ -277,6 +278,7 @@ class Grid extends React.Component {
                     flexWrap: 'wrap'
                 }}>
                 { squares }
+                <BoardSquareMenu />
             </div>
         );
     }

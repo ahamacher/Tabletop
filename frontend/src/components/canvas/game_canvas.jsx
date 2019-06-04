@@ -12,7 +12,7 @@ class GameCanvas extends React.Component {
     }
 
     drawGrid(canvas, ctx) {
-        let s = 36
+        let s = 45
         let nX = Math.floor(canvas.width / s) - 2
         let nY = Math.floor(canvas.height / s) - 2
         let pX = canvas.width - nX * s
@@ -24,11 +24,11 @@ class GameCanvas extends React.Component {
 
         ctx.strokeStyle = 'lightgrey'
         ctx.beginPath()
-        for (var x = pL; x <= canvas.width - pR; x += s) {
+        for (let x = pL; x <= canvas.width - pR; x += s) {
             ctx.moveTo(x, pT)
             ctx.lineTo(x, canvas.height - pB)
         }
-        for (var y = pT; y <= canvas.height - pB; y += s) {
+        for (let y = pT; y <= canvas.height - pB; y += s) {
             ctx.moveTo(pL, y)
             ctx.lineTo(canvas.width - pR, y)
         }
@@ -37,8 +37,8 @@ class GameCanvas extends React.Component {
 
     render() {
         return (
-            <div style={{position: "relative", height: "900px", width: "900px"}}>
-                <canvas ref="canvas" height="900" width="900">
+            <div style={{position: "relative", height: "1000px", width: "1000px"}}>
+                <canvas ref="canvas" height="1000" width="1000">
                 </canvas>
                 <GridContainer />
             </div>

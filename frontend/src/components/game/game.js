@@ -5,6 +5,7 @@ import GameCanvas from '../canvas/game_canvas';
 import ItemsIndexContainer from '../items_menu/items_index_container';
 import MessagesPage from '../messages/messages_page';
 import GameModalContainer from '../game_modal/game_modal_container';
+import MessageModal from "../canvas/message_modal";
 
 class Game extends Component {
   constructor(props){
@@ -23,10 +24,14 @@ class Game extends Component {
     fetchImages();
     fetchImageInstances();
     fetchGameById(gameId);
-    const endpoint = (process.env.NODE_ENV === "production") ? "https://tabletop-apps.herokuapp.com" : 'http://localhost:8000';
+    const endpoint = (process.env.NODE_ENV !== "production") ? "http://tabletop-apps.herokuapp.com" : 'http://localhost:8000';
     const socket = socketIOClient(endpoint);
     socket.emit('join', gameId);
     this.socket = socket
+  }
+
+  componentWillUnmount() {
+    this.props.clearImages();
   }
 
   update(form) {
@@ -53,13 +58,13 @@ class Game extends Component {
   render() {
     return(
       <div className="game-div">
-        {/* <h1>LOGGED INTO GAME: {this.props.gameId}</h1> */}
         <GameModalContainer gameId={this.props.gameId}/>
         <section className="game-view">
           <GameCanvas />
           <ItemsIndexContainer />
         </section>
         <MessagesPage gameId={this.props.gameId}/>
+        <MessageModal gameId={this.props.gameId}/>
       </div>
     )
   }

@@ -22,5 +22,4 @@ export const fetchMessagesByGameId = (gameId) => (dispatch) => (
 
 export const createMessage = (gameId, messageParams) => (dispatch) => (
     messagesApiUtil.createMessage(gameId, messageParams)
-        .then((res) => dispatch(receiveMessage(res.data)))
 );

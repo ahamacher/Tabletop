@@ -16,19 +16,24 @@ const collect = (connect, monitor) => {
   }
 };
 
-const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging, piece, openItemModal }) => {
+const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging, piece, openItemModal, selectPiece, selected }) => {
   const scaledPercentage = parseFloat(piece.scalefactor.$numberDecimal)*100;
+  if (!selected) {
+    selected = {};
+    selected.id = "";
+  }
   return (
     <>
         {/* <DragPreviewImage id='drag-preview' connect={connectDragPreview} src={pieceImageURL}/> */}
         <div className={`layer-${piece.layer_id}`}
           ref={connectDragSource}
-          onClick={openItemModal}
+          // onClick={openItemModal}
+            
           style={{
             cursor: 'move',
             
           }}>
-          {pieceImageURL !== undefined ? <img src={pieceImageURL} width={`${scaledPercentage}` + "%"} /> : null}
+        {pieceImageURL !== undefined ? <img src={pieceImageURL} width={`${scaledPercentage}` + "%"} onClick={selectPiece} className={piece.id === selected.id ? "selected" : "unselected"}/> : null}
         </div>
       </>
   )

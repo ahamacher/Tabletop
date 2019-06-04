@@ -9,6 +9,12 @@ class Grid extends React.Component {
     constructor(props) {
         super(props);
         this.moveItem = this.moveItem.bind(this);
+        this.state = {
+            selected: null,
+        };
+        this.select = this.select.bind(this);
+        this.moveItem = this.moveItem.bind(this);
+        this.keybinds = this.keybinds.bind(this);
     }
 
     componentDidMount() {
@@ -22,19 +28,104 @@ class Grid extends React.Component {
         socket.on("image-instance", imageInstance => {
             this.props.receiveImageInstance(imageInstance);
         });
+        this.keybinds();
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.game === undefined || prevProps.game._id !== this.props.match.params.gameId) {
             this.props.fetchImageInstancesByGameId(this.props.match.params.gameId);
         }
+        // this.updateSelected();
     }
 
     componentWillUnmount() {
         this.props.clearImageInstances();
     }
 
+    keybinds(){
+        let posX;
+        let posY;
+        let pos;
+        let newSelected;
+        document.addEventListener('keydown', (e) => {
+            // e.preventDefault();
+            switch (e.key) {
+                case "ArrowUp":
+                    // move up
+                    e.preventDefault();
+                    if (this.state.selected) { 
+                        newSelected = this.state.selected;
+                        posX = this.state.selected.positionX;
+                        posY = this.state.selected.positionY;
+                        if (posY - 1 < 0) {
+                            posY = 0;
+                        } else {
+                            newSelected.positionY -= 1;
+                        }
+                        pos = [posX, posY - 1];
+                        this.moveItem(this.state.selected.id, null, pos);
+                        this.setState({ selected: newSelected });
+                    }
+                break;
+                case "ArrowLeft":
+                    // move left
+                    e.preventDefault();
+                    if (this.state.selected) {
+                        newSelected = this.state.selected;
+                        posX = this.state.selected.positionX;
+                        posY = this.state.selected.positionY;
+                        if (posX - 1 < 0) {
+                            posX = 0;
+                        } else {
+                            newSelected.positionX -= 1;
+                        }
+                        pos = [posX - 1, posY];
+                        this.moveItem(this.state.selected.id, null, pos);
+                        this.setState({ selected: newSelected });
+                    }
+                break;
+                case "ArrowRight":
+                    // move right
+                    e.preventDefault();
+                    if (this.state.selected) {
+                        newSelected = this.state.selected;
+                        posX = this.state.selected.positionX;
+                        posY = this.state.selected.positionY;
+                        if (posX + 1 > 10) {
+                            posX = 10;
+                        } else {
+                            newSelected.positionX += 1;
+                        }
+                        pos = [posX + 1, posY];
+                        this.moveItem(this.state.selected.id, null, pos);
+                        this.setState({ selected: newSelected });
+                    }
+                break;
+                case "ArrowDown":
+                    // move down
+                    e.preventDefault();
+                    if (this.state.selected) {
+                        newSelected = this.state.selected;
+                        posX = this.state.selected.positionX;
+                        posY = this.state.selected.positionY;
+                        if (posY + 1 > 10) {
+                            posY = 10;
+                        } else {
+                            newSelected.positionY += 1;
+                        }
+                        pos = [posX, posY + 1];
+                        this.moveItem(this.state.selected.id, null, pos);
+                        this.setState({ selected: newSelected });
+                    }
+                break;
+                default:
+                    break;
+            }
+        }, false);
+    }
+
     moveItem(id, imageId, pos) {
+        // debugger;
         if (id) {
             this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] })
         } else if (imageId) {
@@ -79,9 +170,39 @@ class Grid extends React.Component {
         }
     }
 
+    select(pieceId) {
+        // debugger;
+        const { pieces } = this.props;
+        let piece;
+        for (let p in pieces) {
+            if (p === pieceId) {
+                piece = pieces[p];
+            }
+        }
+        this.setState({
+            selected: piece,
+        })
+    }
+
+    updateSelected(){
+        if (this.state.selected){
+            let pieceId = this.state.selected.id;
+            const { pieces } = this.props;
+            let piece;
+            for (let p in pieces) {
+                if (p === pieceId) {
+                    piece = pieces[p];
+                }
+            }
+            this.setState({
+                selected: piece,
+            })
+        }
+    }
+
 
     renderPieces(pos) {
-        
+        const { selected } = this.state;
         if ( this.getPieces(pos) !== null) {
             
             let matching = []
@@ -89,7 +210,16 @@ class Grid extends React.Component {
                 let image = piece && (this.props.images[piece.image_id] || this.props.images[piece.image_id._id]);
                 if (piece && image) {
                     if (image.url !== undefined) {
-                        matching.push(<Item id={piece.id} piece={piece} pieceImageURL={image.url} openItemModal={() => this.props.openItemModal(piece.id)} />)
+                        matching.push(
+                        <Item key={piece.id}
+                            id={piece.id}
+                            piece={piece} 
+                            pieceImageURL={image.url} 
+                            // openItemModal={() => this.props.openItemModal(piece.id)} 
+                            selectPiece={() => this.select(piece.id)}
+                            selected={selected}
+                        />
+                        )
                     }
                 }
             })

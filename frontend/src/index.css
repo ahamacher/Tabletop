@@ -577,3 +577,7 @@ code {
 .layer-1{
   position: absolute;
 }
+
+.selected {
+  border: 2px solid yellow;
+}

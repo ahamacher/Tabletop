@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
         pieces: state.entities.imageInstances,
         gameId: ownProps.match.params.gameId,
         images: state.entities.images,
-        messages: state.entities.messages
+        messages: state.entities.messages,
+        messageDisplay: ownProps.messageDisplay
     }
 }
 

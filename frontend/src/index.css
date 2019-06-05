@@ -665,6 +665,99 @@ code {
 }
 
 
+.grid-message {
+    background-color: #2F3135;
+    color: white;
+    padding: 10px 15px;
+    position: absolute;
+    border: 1px solid gray;
+    border-radius: 25px;
+    max-height: 10vw;
+    width: 200px;
+    overflow: auto;
+    z-index: 9999;
+}
+
+.message-icon img{
+  width: 100%;
+  height: 100%;
+}
+
+.message-icon .grid-message-icon {
+  visibility: hidden;
+  background-color: #2F3135;
+  color: white;
+  padding: 10px 15px;
+  position: absolute;
+  bottom: 95%;
+  left: 15%;
+  border: 1px solid gray;
+  border-radius: 25px;
+  max-height: 10vw;
+  width: 200px;
+  overflow: auto;
+  z-index: 9999;
+}
+
+.message-icon:hover {
+  filter: brightness(85%);
+}
+
+.message-icon:hover .grid-message-icon {
+  visibility: visible;
+}
+
+.message-display-options {
+  display: flex;
+  color: white;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  color: white;
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px 0;
+  font-size: 18px;
+}
+
+.game-modal-container label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message-change-radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  appearance: none;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border: 1px solid grey;
+  border-radius: 50px;
+  background-color: #25252A;
+  outline: none;
+}
+
+.message-change-radio:hover {
+  background-color: #2F3135;
+}
+
+.message-change-radio:checked {
+  height: 30px;
+  width: 30px;
+  background-color: #FAA619;
+  border: none;
+  border-radius: 50px;
+}
+
 /* Default context menu css START */
 .react-contextmenu {
     background-color: #fff;

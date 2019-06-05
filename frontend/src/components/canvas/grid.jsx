@@ -3,6 +3,7 @@ import BoardSquare from './board_square';
 import Item from './item';
 import 'whatwg-fetch';
 import socketIOClient from 'socket.io-client';
+import m_icon from '../../M_icon.svg';
 import BoardSquareMenu from "../context_menu/board_square_menu";
 
 class Grid extends React.Component {
@@ -62,8 +63,9 @@ class Grid extends React.Component {
                             posY = 0;
                         } else {
                             newSelected.positionY -= 1;
+                            posY -= 1;
                         }
-                        pos = [posX, posY - 1];
+                        pos = [posX, posY];
                         this.moveItem(this.state.selected.id, null, pos);
                         this.setState({ selected: newSelected });
                     }
@@ -79,8 +81,9 @@ class Grid extends React.Component {
                             posX = 0;
                         } else {
                             newSelected.positionX -= 1;
+                            posX -= 1;
                         }
-                        pos = [posX - 1, posY];
+                        pos = [posX, posY];
                         this.moveItem(this.state.selected.id, null, pos);
                         this.setState({ selected: newSelected });
                     }
@@ -92,12 +95,13 @@ class Grid extends React.Component {
                         newSelected = this.state.selected;
                         posX = this.state.selected.positionX;
                         posY = this.state.selected.positionY;
-                        if (posX + 1 > 10) {
-                            posX = 10;
+                        if (posX + 1 > 9) {
+                            posX = 9;
                         } else {
                             newSelected.positionX += 1;
+                            posX += 1;
                         }
-                        pos = [posX + 1, posY];
+                        pos = [posX, posY];
                         this.moveItem(this.state.selected.id, null, pos);
                         this.setState({ selected: newSelected });
                     }
@@ -109,12 +113,13 @@ class Grid extends React.Component {
                         newSelected = this.state.selected;
                         posX = this.state.selected.positionX;
                         posY = this.state.selected.positionY;
-                        if (posY + 1 > 10) {
-                            posY = 10;
+                        if (posY + 1 > 9) {
+                            posY = 9;
                         } else {
                             newSelected.positionY += 1;
+                            posY += 1;
                         }
-                        pos = [posX, posY + 1];
+                        pos = [posX, posY];
                         this.moveItem(this.state.selected.id, null, pos);
                         this.setState({ selected: newSelected });
                     }
@@ -126,7 +131,6 @@ class Grid extends React.Component {
     }
 
     moveItem(id, imageId, pos) {
-        // debugger;
         if (id) {
             this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] })
         } else if (imageId) {
@@ -149,10 +153,39 @@ class Grid extends React.Component {
 
     renderMessage(pos){
         const message = this.getMessage(pos);
+        const { messageDisplay } = this.props;
+        
 
         if (message) {
+            switch (messageDisplay) {
+                case "full":
+                    return (
+                        <div id={message.id} className="grid-message">
+                        {message.text}
+                        </div>
+                    )
+                case "small":
+                    return (
+                        <div className="message-icon">
+                            <img src={m_icon} alt="" />
+                            <div id={message.id} className="grid-message-icon">
+                                {message.text}
+                            </div>
+                        </div>
+                    )
+                case "none":
+                    return (
+                        <div id={message.id} className="hidden">
+                            {message.text}
+                        </div>
+                    )
+                default:
+                    break;
+            }
+            
             return (
-                <div id={message.id}>
+
+                <div id={message.id} className="grid-message">
                     {message.text}
                 </div>
             );

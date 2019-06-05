@@ -12,10 +12,12 @@ class Game extends Component {
     super(props);
     this.state = {
       response: [],
-      message: ''
-    }
+      message: '',
+      messageDisplay: "full"
+    };
     this.sendSocketIO = this.sendSocketIO.bind(this);
     this.messageRender = this.messageRender.bind(this);
+    this.changeMessageDisplay = this.changeMessageDisplay.bind(this);
   }
 
   componentDidMount(){
@@ -55,12 +57,18 @@ class Game extends Component {
     ))
   }
 
+  changeMessageDisplay(type) {
+    this.setState({ messageDisplay: type });
+  }
+
   render() {
+    const { messageDisplay } = this.state;
     return(
       <div className="game-div">
-        <GameModalContainer gameId={this.props.gameId}/>
+        {/* <h1>LOGGED INTO GAME: {this.props.gameId}</h1> */}
+        <GameModalContainer gameId={this.props.gameId} messageDisplay={messageDisplay} changeMessageDisplay={this.changeMessageDisplay} />
         <section className="game-view">
-          <GameCanvas />
+          <GameCanvas messageDisplay={messageDisplay} />
           <ItemsIndexContainer />
         </section>
         <MessagesPage gameId={this.props.gameId}/>

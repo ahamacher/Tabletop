@@ -57,7 +57,6 @@ class Images extends React.Component {
 
         return(
             <div className="game-modal-">
-
             
                 <form onSubmit={this.handleSubmit} encType="multipart/form-data" className="upload-form">
                     <div className="upload-head">Select image to upload:</div>

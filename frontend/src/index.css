@@ -404,26 +404,34 @@ code {
 .game-view {
   display: flex;
   overflow: scroll;
+  position: relative;
 }
 
 /* Game Modal */
 
 .modal-button-container {
-  position: absolute;
-  right: 40px;
-  top: 95px;
+  position: sticky;
+  right: 20px;
   display: flex;
   flex-direction: column;
   z-index: 10;
+  margin-top: 40px;
+  margin-left: 40px;
 }
 
 .modal-button-ham .fas {
   font-size: 26px;
+  color: #FAA619;
 }
 
 .modal-button-ham:hover .fas {
   cursor: pointer;
 }
+
+@media only screen and (min-width: 900px) {
+  
+}
+
 
 .hidden {
   display: none;
@@ -845,4 +853,5 @@ code {
 }
 
 /* Default context menu css END */
+
 

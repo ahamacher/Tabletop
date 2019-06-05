@@ -40,7 +40,7 @@ class GameCanvas extends React.Component {
             <div style={{position: "relative", height: "900px", width: "900px"}}>
                 <canvas ref="canvas" height="900" width="900">
                 </canvas>
-                <GridContainer />
+                <GridContainer messageDisplay={this.props.messageDisplay} />
             </div>
 
         );

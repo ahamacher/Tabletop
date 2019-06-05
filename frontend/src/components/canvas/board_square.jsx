@@ -1,7 +1,12 @@
 import React from 'react'
-import Square from './square'
 import { DropTarget } from 'react-dnd'
 import { KNIGHT } from './items'
+import { ContextMenuTrigger } from "react-contextmenu";
+import Square from "./square";
+
+function menuCollect(props) {
+    return props;
+}
 
 const squareTarget = {
     drop(props, monitor) {
@@ -18,7 +23,23 @@ const collect = (connect, monitor) => {
     }
 }
 
-const BoardSquare = ({connectDropTarget, children }) => {
+const BoardSquare = ({x, y, connectDropTarget, children, openMessageModal }) => {
+    const attributes = {
+        style: {
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+        }
+    };
+
+    const handleClick = (e, data, target) => {
+        console.log(`this was clicked on square ${data.posX}-${data.posY}`)
+
+        if (data.action === "Message") {
+            openMessageModal()
+        }
+    }
+
     return connectDropTarget(
         <div
             style={{
@@ -26,7 +47,21 @@ const BoardSquare = ({connectDropTarget, children }) => {
                 width: '100%',
                 height: '100%',
             }}>
-            <Square>{children}</Square>
+            <ContextMenuTrigger
+                id={"BOARD_SQUARE"}
+                holdToDisplay={-1}
+                name={`board-square-${x}-${y}`}
+                onItemClick={handleClick}
+                allowImageManipulation={false}
+                posX={x}
+                posY={y}
+                collect={menuCollect}
+                attributes={attributes}
+            >
+                <Square>
+                    {children}
+                </Square>
+            </ContextMenuTrigger>
         </div>
     )
 }

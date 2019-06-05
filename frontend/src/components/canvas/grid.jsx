@@ -4,6 +4,7 @@ import Item from './item';
 import 'whatwg-fetch';
 import socketIOClient from 'socket.io-client';
 import m_icon from '../../M_icon.svg';
+import BoardSquareMenu from "../context_menu/board_square_menu";
 
 class Grid extends React.Component {
 
@@ -130,7 +131,6 @@ class Grid extends React.Component {
     }
 
     moveItem(id, imageId, pos) {
-        debugger;
         if (id) {
             this.props.updateImageInstance(id, { positionX: pos[0], positionY: pos[1] })
         } else if (imageId) {
@@ -139,14 +139,13 @@ class Grid extends React.Component {
     }
 
     renderSquare(pos) {
-        let zIndex = 0
         return (
-            <div key={pos} style={{ width: '10%', height: '10%' }}>
-                <BoardSquare x={pos[0]} y={pos[1]} moveItem={this.moveItem}>
-                    <>
+            <div key={pos} style={{ width: '5%', height: '5%' }}>
+                <BoardSquare x={pos[0]} y={pos[1]} moveItem={this.moveItem} openMessageModal={() => this.props.openMessageModal({posX: pos[0], posY: pos[1]})}>
+                    {<>
                         {this.renderMessage(pos)}
                         {this.renderPieces(pos)}
-                    </>
+                    </>}
                 </BoardSquare>
             </div>
         )
@@ -249,9 +248,10 @@ class Grid extends React.Component {
                             id={piece.id}
                             piece={piece} 
                             pieceImageURL={image.url} 
-                            // openItemModal={() => this.props.openItemModal(piece.id)} 
+                            openItemModal={() => this.props.openItemModal(piece.id)} 
                             selectPiece={() => this.select(piece.id)}
                             selected={selected}
+                            openMessageModal={() => this.props.openMessageModal({ posX: pos[0], posY: pos[1] })}
                         />
                         )
                     }
@@ -292,8 +292,8 @@ class Grid extends React.Component {
 
     render() {
         const squares = [];
-        for (let col = 0; col < 10; col++) {
-            for (let row = 0; row < 10; row++ ) {
+        for (let col = 0; col < 20; col++) {
+            for (let row = 0; row < 20; row++ ) {
                 squares.push(this.renderSquare([row, col]))
             }
         }
@@ -311,6 +311,7 @@ class Grid extends React.Component {
                     flexWrap: 'wrap'
                 }}>
                 { squares }
+                <BoardSquareMenu />
             </div>
         );
     }

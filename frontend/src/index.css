@@ -557,15 +557,20 @@ code {
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 10;
+  background: rgba(0, 0, 0, 0);
+  z-index: 5000;
 }
 
 .item-modal-child, .message-modal-child {
+  border: 1px solid red;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  z-index: 5100;
+  background-color: #2F3135;
+  color: white;
+  padding: 10px 15px;
+  position: absolute;
+  border: 1px solid gray;
+  border-radius: 25px;
 }
 
 #drag-preview img {

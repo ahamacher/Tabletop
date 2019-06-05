@@ -5,7 +5,7 @@ import GameCanvas from '../canvas/game_canvas';
 import ItemsIndexContainer from '../items_menu/items_index_container';
 import MessagesPage from '../messages/messages_page';
 import GameModalContainer from '../game_modal/game_modal_container';
-import MessageModal from "../canvas/message_modal";
+// import MessageModal from "../canvas/message_modal";
 
 class Game extends Component {
   constructor(props){
@@ -72,7 +72,7 @@ class Game extends Component {
           <ItemsIndexContainer />
         </section>
         <MessagesPage gameId={this.props.gameId}/>
-        <MessageModal gameId={this.props.gameId}/>
+        {/* <MessageModal gameId={this.props.gameId}/> */}
       </div>
     )
   }

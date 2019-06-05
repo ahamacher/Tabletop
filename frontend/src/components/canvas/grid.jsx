@@ -5,6 +5,8 @@ import 'whatwg-fetch';
 import socketIOClient from 'socket.io-client';
 import m_icon from '../../M_icon.svg';
 import BoardSquareMenu from "../context_menu/board_square_menu";
+import MessageModal from "../canvas/message_modal";
+import ItemModal from "./item_modal";
 
 class Grid extends React.Component {
 
@@ -146,6 +148,8 @@ class Grid extends React.Component {
                         {this.renderMessage(pos)}
                         {this.renderPieces(pos)}
                     </>}
+                    <MessageModal posX={pos[0]} posY={pos[1]} gameId={this.props.gameId} />
+                    <ItemModal posX={pos[0]} posY={pos[1]}/>
                 </BoardSquare>
             </div>
         )

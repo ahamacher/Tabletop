@@ -66,10 +66,10 @@ class Game extends Component {
     return(
       <div className="game-div">
         {/* <h1>LOGGED INTO GAME: {this.props.gameId}</h1> */}
-        <GameModalContainer gameId={this.props.gameId} messageDisplay={messageDisplay} changeMessageDisplay={this.changeMessageDisplay} />
         <section className="game-view">
           <GameCanvas messageDisplay={messageDisplay} />
           <ItemsIndexContainer />
+          <GameModalContainer gameId={this.props.gameId} messageDisplay={messageDisplay} changeMessageDisplay={this.changeMessageDisplay} />
         </section>
         <MessagesPage gameId={this.props.gameId}/>
         {/* <MessageModal gameId={this.props.gameId}/> */}

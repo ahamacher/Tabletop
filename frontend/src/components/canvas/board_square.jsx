@@ -40,7 +40,6 @@ const BoardSquare = ({x, y, connectDropTarget, children, openMessageModal }) => 
         }
     }
 
-
     return connectDropTarget(
         <div
             style={{
@@ -53,7 +52,7 @@ const BoardSquare = ({x, y, connectDropTarget, children, openMessageModal }) => 
                 holdToDisplay={-1}
                 name={`board-square-${x}-${y}`}
                 onItemClick={handleClick}
-                // allowRemoval={i % 2 === 0}
+                allowImageManipulation={false}
                 posX={x}
                 posY={y}
                 collect={menuCollect}

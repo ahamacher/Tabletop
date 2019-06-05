@@ -9,11 +9,11 @@ const BoardSquareMenu = (props) => {
     return (
         <ContextMenu id={id}>
             {trigger ? <MenuItem onClick={handleItemClick} data={{ action: 'Message' }}>Add Message</MenuItem> : <MenuItem></MenuItem>}
-            {/* {trigger && (
-                trigger.allowRemoval
-                    ? <MenuItem onClick={handleItemClick} data={{ action: 'Removed' }}>{`Remove 1 ${trigger.name}`}</MenuItem>
-                    : <MenuItem disabled>{'Removal disabled'}</MenuItem>
-            )} */}
+            {trigger && (
+                trigger.allowImageManipulation
+                    ? <MenuItem onClick={handleItemClick} data={{ action: 'ManipulateImage' }}>Manipulate Image</MenuItem>
+                    : <MenuItem disabled>{'Manipulate Image disabled'}</MenuItem>
+            )}
         </ContextMenu>
     );
 };

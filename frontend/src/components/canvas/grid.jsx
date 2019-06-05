@@ -135,14 +135,13 @@ class Grid extends React.Component {
     }
 
     renderSquare(pos) {
-       
         return (
             <div key={pos} style={{ width: '5%', height: '5%' }}>
                 <BoardSquare x={pos[0]} y={pos[1]} moveItem={this.moveItem} openMessageModal={() => this.props.openMessageModal({posX: pos[0], posY: pos[1]})}>
-                    <>
+                    {<>
                         {this.renderMessage(pos)}
                         {this.renderPieces(pos)}
-                    </>
+                    </>}
                 </BoardSquare>
             </div>
         )
@@ -216,9 +215,10 @@ class Grid extends React.Component {
                             id={piece.id}
                             piece={piece} 
                             pieceImageURL={image.url} 
-                            // openItemModal={() => this.props.openItemModal(piece.id)} 
+                            openItemModal={() => this.props.openItemModal(piece.id)} 
                             selectPiece={() => this.select(piece.id)}
                             selected={selected}
+                            openMessageModal={() => this.props.openMessageModal({ posX: pos[0], posY: pos[1] })}
                         />
                         )
                     }

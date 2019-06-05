@@ -4,13 +4,15 @@ import { createMessage } from "../../actions/messages_actions";
 import { connect } from "react-redux";
 import MessageModalForm from "../messages/message_modal_form";
 
-const MessageModal = ({ messageModal, closeMessageModal, createMessage }) => {
-    if (!messageModal) {
+const MessageModal = ({ messageModal, closeMessageModal, createMessage, posX, posY }) => {
+    if (!messageModal || (posX !== messageModal.posX) || (posY !== messageModal.posY)) {
         return null;
     }
 
     return (
-        <div className="message-modal-background" onClick={closeMessageModal}>
+        <>
+            <div className="message-modal-background" onClick={closeMessageModal}>
+            </div>
             <div className="message-modal-child" onClick={e => e.stopPropagation()}>
                 <MessageModalForm
                     posX={messageModal.posX}
@@ -18,13 +20,15 @@ const MessageModal = ({ messageModal, closeMessageModal, createMessage }) => {
                     createMessage={createMessage}
                     closeMessageModal={closeMessageModal} />
             </div>
-        </div>
+        </>
     )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        messageModal: state.ui.messageModal
+        messageModal: state.ui.messageModal,
+        posX: ownProps.posX,
+        posY: ownProps.posY
     }
 };
 

@@ -4,25 +4,36 @@ import { updateImageInstance } from "../../actions/image_instance_actions";
 import { connect } from "react-redux";
 import ItemResizingForm from "./item_resizing_form";
 
-const ItemModal = ({itemModal, updateImageInstance, closeItemModal}) => {
-    if (!itemModal) {
+const ItemModal = ({itemModal, posX, posY, itemPosX, itemPosY, updateImageInstance, closeItemModal}) => {
+    if (!itemModal || (posX !== itemPosX) || (posY !== itemPosY)) {
         return null;
     }
 
     return (
-        <div className="item-modal-background" onClick={closeItemModal}>
+        <>
+            <div className="item-modal-background" onClick={closeItemModal}>
+            </div>
             <div className="item-modal-child" onClick={e => e.stopPropagation()}>
                 <ItemResizingForm 
                     updateImageInstance={(updateParams) => { updateImageInstance(itemModal, updateParams)}}
                     closeItemModal={closeItemModal}/>
             </div>
-        </div>
+        </>
     )
 }
 
 const mapStateToProps = state => {
+    const itemModal = state.ui.itemModal;
+    let itemPosX;
+    let itemPosY;
+    if (itemModal) {
+        itemPosX = state.entities.imageInstances[itemModal].positionX;
+        itemPosY = state.entities.imageInstances[itemModal].positionY;
+    }
     return {
-        itemModal: state.ui.itemModal
+        itemModal,
+        itemPosX,
+        itemPosY
     }
 };
 

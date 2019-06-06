@@ -691,9 +691,15 @@ code {
     z-index: 3000;
 }
 
+.message-icon {
+  position: absolute;
+  z-index: 3000;
+}
+
 .message-icon img{
   width: 100%;
   height: 100%;
+  z-index: 3000;
 }
 
 .message-icon .grid-message-icon {
@@ -709,7 +715,7 @@ code {
   max-height: 10vw;
   width: 200px;
   overflow: auto;
-  z-index: 9999;
+  z-index: 3000;
 }
 
 .message-icon:hover {

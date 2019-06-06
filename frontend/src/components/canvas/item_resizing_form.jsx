@@ -4,15 +4,18 @@ class ItemResizingForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            layer_id: "",
-            scalefactor: ""
+            layer_id: this.props.layerId,
+            scalefactor: this.props.scalefactor
         }
-        this.handleChange = this.handleChange.bind(this);
+        this.handleSlider = this.handleSlider.bind(this);
         this.handleNumberChange = this.handleNumberChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(e) {
+    handleSlider(e) {
+        this.props.updateImageInstance({
+            scalefactor: e.currentTarget.value
+        })
         this.setState({
             scalefactor: e.currentTarget.value
         })
@@ -33,23 +36,31 @@ class ItemResizingForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <div>
+                <label htmlFor="scalefactor">scalefactor</label>
                 <input 
-                    type="text"
-                    onChange={this.handleChange}
+                    type="range"
+                    className="slider"
+                    id="scalefactor"
+                    min="1"
+                    max="20"
                     value={this.state.scalefactor}
+                    onChange={this.handleSlider}
                     placeholder={"Scale"}/>
                     
                 <br/>
-               
-                <input
-                    type="number"
-                    onChange={this.handleNumberChange}
-                    value={this.state.layer_id}
-                    placeholder={"Layer"} />
-                <br/>
-                <input type="submit" value="Change Image Attributes"/>
-            </form>
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="layer_id">layer ID</label>
+                    <input
+                        type="number"
+                        id="layer_id"
+                        onChange={this.handleNumberChange}
+                        value={this.state.layer_id}
+                        placeholder={"Layer"} />
+                    <br/>
+                    <input type="submit" value="Change Image Attributes"/>
+                </form>
+            </div>
         )
     }
 }

@@ -255,7 +255,7 @@ class Grid extends React.Component {
                             openItemModal={() => this.props.openItemModal(piece.id)} 
                             selectPiece={() => this.select(piece.id)}
                             selected={selected}
-                            openMessageModal={() => this.props.openMessageModal({ posX: pos[0], posY: pos[1] })}
+                            openMessageModal={this.props.openMessageModal}
                         />
                         )
                     }

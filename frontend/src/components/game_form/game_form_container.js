@@ -10,7 +10,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        createGame: (game) => dispatch(createGame(game))
+        createGame: (name, image) => dispatch(createGame(name, image))
     }
 }
 

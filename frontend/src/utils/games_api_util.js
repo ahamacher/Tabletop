@@ -5,10 +5,13 @@ export const fetchGamebyGameId = (gameId) => {
 }
 
 export const createGame = (game) => {
-  return axios.post(`/api/games/`, {
-    game
-  })
-}
+  return axios({
+    method: 'post',
+    url: `/api/games`,
+    data: game,
+    config: { headers: {'Content-Type': 'multipart/form-data'}}
+  });
+};
 
 export const joinGame = gameId => {
   return axios.put(`/api/games/${gameId}`)

@@ -26,7 +26,6 @@ class Images extends React.Component {
 
     handleImageFile(e) {
         const image = e.currentTarget.files[0];
-        ;
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
             this.setState({

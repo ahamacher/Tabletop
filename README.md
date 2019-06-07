@@ -1,5 +1,8 @@
 # Tabletop
 a/A group project with MERN-stack
+
+[live site](http://tabletop-apps.herokuapp.com/)
+
 * Background and Overview
   * TableTop is a web-based tabletop gaming supplement with an emphasis on maps. It aims provide a seamless real-time gaming experience for remote tabletop gamers, all while preserving the simplicity of tabletop gaming. To accomplish this, it will be an interactive map first and foremost, with all other features unobtrusive and optional. Every second a player spends not thinking about the interface is a win for us. 
 

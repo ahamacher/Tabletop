@@ -19,6 +19,9 @@ const gameSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    cover: {
+        type: String
+    },
     users: [{ type: Schema.Types.ObjectId, ref: 'users'}]
 });
 

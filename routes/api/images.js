@@ -15,7 +15,7 @@ aws.config.update({
     secretAccessKey: config.s3secretAccessKey,
     accessKeyId: config.s3accessKeyId,
     region: config.s3region
-})
+});
 
 const s3 = new aws.S3();
 
@@ -48,7 +48,9 @@ router.post("/game/:game_id",
     upload.single("image"),
 
     function(req, res) {
-        console.log(req.params.game_id)
+        // console.log(req.params.game_id)
+        console.log(req.file);
+        console.log(req.body);
         const newImage = new Image({
             game_id: req.params.game_id,
             url: req.file.location

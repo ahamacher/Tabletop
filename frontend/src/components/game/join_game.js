@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class GameForm extends React.Component {
     constructor(props) {
@@ -27,9 +28,10 @@ class GameForm extends React.Component {
                         <h2>Join a New Game</h2>
                         <label>Game ID</label>
                         <input type="text"
-                            onChange={this.handleChange} value={this.state.gameId} />
+                            onChange={this.handleChange} value={this.state.gameId} placeholder="Ask your GameMaster for a game id"/>
                         <input type="submit" value="Submit" />
                     </form>
+                    <div className="create-game-subtext">Don't have a game id? Click <Link to={'/games/new'}>here</Link> to make one.</div>
                 </section>
             </div>
         );

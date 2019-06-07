@@ -4,6 +4,33 @@ const passport = require("passport");
 const Game = require('../../models/Game');
 const User = require('../../models/User');
 
+const aws = require("aws-sdk");
+const multer = require("multer");
+const multerS3 = require("multer-s3");
+const config = require("../../config/keys");
+
+aws.config.update({
+    secretAccessKey: config.s3secretAccessKey,
+    accessKeyId: config.s3accessKeyId,
+    region: config.s3region
+});
+
+const s3 = new aws.S3();
+
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        acl: "public-read",
+        bucket: "tabletop-images-16",
+        metadata: function (req, file, cb) {
+            cb(null, { fieldName: "TESTING_META_DATA" });
+        },
+        key: function (req, file, cb) {
+            cb(null, Date.now().toString())
+        }
+    })
+});
+
 // games index
 router.get('/', 
     passport.authenticate('jwt', { session: false }),
@@ -44,11 +71,21 @@ router.put('/:id',
 // game create 
 router.post('/',
     passport.authenticate('jwt', { session: false }),
-    (req, res) => {
+    upload.single("image"),
+
+    function(req, res) {
+        let cover;
+        if (req.file) {
+            cover = req.file.location;
+        } else {
+            cover = null;
+        }
+
         const newGame = new Game({
-            name: req.body.game.name,
+            name: req.body.name,
             gameMaster: req.user.id,
-            users: [req.user.id]
+            users: [req.user.id],
+            cover: cover
         });
 
         newGame.save().then(game => res.json(game));

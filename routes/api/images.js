@@ -48,20 +48,14 @@ router.post("/game/:game_id",
     upload.single("image"),
 
     function(req, res) {
-        // console.log(req.params.game_id)
-        console.log(req.file);
-        console.log(req.body);
         const newImage = new Image({
             game_id: req.params.game_id,
             url: req.file.location
         })
 
-        newImage.save().then(image => {
-            const newImageInstance = new ImageInstance({
-                image_id: image._id
-            })
-            newImageInstance.save().then(() => res.json(image))
-        });
+        newImage.save().then(image => (
+            res.json(image))
+        );
     }
 );
 

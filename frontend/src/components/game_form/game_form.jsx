@@ -28,7 +28,6 @@ class GameForm extends React.Component {
     const image = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      // debugger;
       this.setState({
         image: image,
         imageUrl: fileReader.result

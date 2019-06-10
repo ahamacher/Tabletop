@@ -33,7 +33,7 @@ const BoardSquare = ({x, y, connectDropTarget, children, openMessageModal }) => 
     };
 
     const handleClick = (e, data, target) => {
-        console.log(`this was clicked on square ${data.posX}-${data.posY}`)
+        // console.log(`this was clicked on square ${data.posX}-${data.posY}`)
 
         if (data.action === "Message") {
             openMessageModal()

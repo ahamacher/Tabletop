@@ -37,28 +37,23 @@ app.use(bodyParser.json());
 
   server.listen(process.env.PORT || 8000);
 
-// const server = require("http").createServer(app);
-// const io = require("socket.io").listen(server);
-
-// const io = require("socket.io")(app);
-// server.listen(process.env.PORT || 8000);
-
-// const http = require('http').Server(app);
-// const io = require('socket.io')(http);
 app.io = io;
 
 io.on('connection', function(socket) {
-  console.log('a user connected');
+  // console.log('a user connected');
   socket.on('disconnect', function() {
-    console.log('a user disconnected');
+    // console.log('a user disconnected');
   });
   socket.on('join', room => {
-    console.log(`a user connected to room: ${room}`)
+    // console.log(`a user connected to room: ${room}`)
     socket.join(room);
   });
   socket.on('messages', data => {
-    console.log(data);
+    // console.log(data);
     io.in(data.room).emit('new-message', data.message);
+  });
+  socket.on('ping', () => {
+    console.log('ping');
   });
 });
 // io.listen(8000);

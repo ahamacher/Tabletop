@@ -19,6 +19,8 @@ class Grid extends React.Component {
         this.select = this.select.bind(this);
         this.moveItem = this.moveItem.bind(this);
         this.keybinds = this.keybinds.bind(this);
+        this.clearSelected = this.clearSelected.bind(this);
+        this.handleMouseUp = this.handleMouseUp.bind(this);
     }
 
     componentDidMount() {
@@ -33,6 +35,7 @@ class Grid extends React.Component {
             this.props.receiveImageInstance(imageInstance);
         });
         this.keybinds();
+        this.clearSelected();
     }
 
     componentDidUpdate(prevProps) {
@@ -44,6 +47,16 @@ class Grid extends React.Component {
 
     componentWillUnmount() {
         this.props.clearImageInstances();
+    }
+
+    clearSelected() {
+        document.addEventListener('mouseup', this.handleMouseUp, true);
+    }
+
+    handleMouseUp(e) {
+        if (e.target != this.state.selected) {
+            this.setState({ selected: null });
+        }
     }
 
     keybinds(){
@@ -97,8 +110,8 @@ class Grid extends React.Component {
                         newSelected = this.state.selected;
                         posX = this.state.selected.positionX;
                         posY = this.state.selected.positionY;
-                        if (posX + 1 > 9) {
-                            posX = 9;
+                        if (posX + 1 > 19) {
+                            posX = 19;
                         } else {
                             newSelected.positionX += 1;
                             posX += 1;
@@ -115,8 +128,8 @@ class Grid extends React.Component {
                         newSelected = this.state.selected;
                         posX = this.state.selected.positionX;
                         posY = this.state.selected.positionY;
-                        if (posY + 1 > 9) {
-                            posY = 9;
+                        if (posY + 1 > 19) {
+                            posY = 19;
                         } else {
                             newSelected.positionY += 1;
                             posY += 1;
@@ -208,7 +221,6 @@ class Grid extends React.Component {
     }
 
     select(pieceId) {
-        // debugger;
         const { pieces } = this.props;
         let piece;
         for (let p in pieces) {

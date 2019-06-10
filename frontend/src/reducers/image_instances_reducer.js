@@ -1,5 +1,5 @@
 import { RECEIVE_IMAGE_INSTANCES, RECEIVE_IMAGE_INSTANCE, CLEAR_IMAGE_INSTANCES } from '../actions/image_instance_actions';
-import { keyBy, merge } from "lodash";
+// import { keyBy, merge } from "lodash";
 
 export default (state = {}, action) => {
     Object.freeze(state);

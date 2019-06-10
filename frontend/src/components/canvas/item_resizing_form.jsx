@@ -22,7 +22,6 @@ class ItemResizingForm extends React.Component {
     }
 
     handleNumberChange(e) {
-        // debugger
         this.setState({
             layer_id: e.currentTarget.value
         })

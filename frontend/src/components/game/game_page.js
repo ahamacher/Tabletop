@@ -55,9 +55,9 @@ class GamePage extends Component {
           <button type="submit">submit</button>
         </form>
         <button onClick={this.sendSocketIO}>socketme</button>
-        <ul>
+        {/* <ul>
           {this.messageRender()}
-        </ul>
+        </ul> */}
       </div>
     )
   }

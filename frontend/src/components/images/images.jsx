@@ -21,7 +21,7 @@ class Images extends React.Component {
         formData.append("x", {y: "1"})
         
         this.props.createImage(formData);
-
+        this.setState({ image: "" });
     }
 
     handleImageFile(e) {

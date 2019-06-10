@@ -8,7 +8,7 @@ const GamesIndexItem = ({ game, currentUser }) => (
                 {/* { game.users.length === 1 ? "(1 player)" : `(${game.users.length} players)` } */}
             </section>
             <section>
-            <img src={game.cover || "https://tabletop-images-16.s3.us-west-2.amazonaws.com/1559927675959"} alt="" class="game-index-cover" />
+            <img src={game.cover || "https://tabletop-images-16.s3.us-west-2.amazonaws.com/1559927675959"} alt="" className="game-index-cover" />
             </section>
             <section className='game-index-item-info'>
                 {game.gameMaster === currentUser.id ? <p className="gm"><i className="fas fa-dungeon"></i>GM</p> : <p>Player</p> }

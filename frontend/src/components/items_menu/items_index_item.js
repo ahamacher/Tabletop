@@ -24,7 +24,7 @@ const ItemsIndexItem = ({ item, connectDragSource, isDragging }) => {
                 cursor: 'move',
             }}
         >
-            <li className='items-index-item'><img src={item.url} width="80"></img></li>
+            <li className='items-index-item'><img src={item.url} width="80" alt=""></img></li>
         </div>
     )
 }

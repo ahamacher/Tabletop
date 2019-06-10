@@ -22,7 +22,7 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 })
 
 router.post('/register', (req, res) => {
-  console.log("we were able to hit register route")
+  // console.log("we were able to hit register route")
   const { errors, isValid } = validateRegisterInput(req.body);
 
   if (!isValid) {
@@ -63,7 +63,7 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  console.log("we were able to hit login route")
+  // console.log("we were able to hit login route")
   const email = req.body.email;
   const password = req.body.password;
   const { errors, isValid } = validateLoginInput(req.body);

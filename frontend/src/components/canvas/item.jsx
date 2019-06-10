@@ -2,7 +2,7 @@ import React from 'react';
 import { DragSource, DragPreviewImage } from 'react-dnd';
 import { KNIGHT } from './items';
 import { ContextMenuTrigger } from "react-contextmenu";
-import { context } from 'react-dnd/lib/cjs/DragDropContext';
+// import { context } from 'react-dnd/lib/cjs/DragDropContext';
 
 
 function menuCollect(props) {
@@ -42,7 +42,7 @@ const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging
 
   const handleClick = (e, data, target) => {
     // #TODO make math here scalable based on global state
-    console.log(`this was clicked on item ${piece.positionX}-${piece.positionY}`)
+    // console.log(`this was clicked on item ${piece.positionX}-${piece.positionY}`)
     if (data.action === "Message") {
       openMessageModal({posX: piece.positionX + Math.floor(contextClickEventOffsetX / 45),
                           posY: piece.positionY + Math.floor(contextClickEventOffsetY / 45)})
@@ -86,7 +86,12 @@ const Item = ({ pieceImageURL, connectDragSource, connectDragPreview, isDragging
           >
           <div></div>
           </ContextMenuTrigger>
-            {pieceImageURL !== undefined ? <img src={pieceImageURL} width={`${scaledPercentage}` + "%"} onContextMenu={toggleMenu} onClick={selectPiece} className={piece.id === selected.id ? "selected" : "unselected"}/> : null}
+            {pieceImageURL !== undefined ? <img
+              alt=""
+              src={pieceImageURL} 
+              width={`${scaledPercentage}` + "%"} 
+              onContextMenu={toggleMenu} onClick={selectPiece} 
+              className={piece.id === selected.id ? "selected" : "unselected"}/> : null}
         </div>
       </>
   )

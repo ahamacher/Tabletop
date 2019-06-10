@@ -43,7 +43,7 @@ router.get('/',
 
 // game show
 router.get('/:id', (req, res) => {
-    console.log(req.params.id);
+    // console.log(req.params.id);
     Game.findById(req.params.id)
         .then(game => {
             return res.json(game);

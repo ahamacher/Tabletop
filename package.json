@@ -15,7 +15,7 @@
   "author": "Andrew, Kevin, Jason Y, Jason L",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.454.0",
+    "aws-sdk": "^2.814.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.0",
